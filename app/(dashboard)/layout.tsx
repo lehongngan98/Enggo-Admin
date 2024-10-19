@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import "../globals.css";
 import LeftSideBar from '@/components/layout/LeftSideBar';
 import TopBar from '@/components/layout/TopBar';
+import { ToastProvider } from '@/lib/ToastProvider';
 
 
 const geistSans = localFont({
@@ -35,6 +36,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <ToastProvider/>
           <div className='flex max-lg:flex-col text-grey-1'>
             <LeftSideBar />
             <TopBar />
