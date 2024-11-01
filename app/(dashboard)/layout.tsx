@@ -33,6 +33,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        {/* Các thẻ khác như meta, title... */}
+      </head>
+      
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
