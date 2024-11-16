@@ -31,7 +31,7 @@ const Delete: React.FC<DeleteProps> = ({ id }) => {
 
             if (res.ok) {
                 setLoading(false);
-                window.location.reload();
+                window.location.href = "/collections";
                 toast.success("Collection deleted successfully");
             }
         } catch (error) {
