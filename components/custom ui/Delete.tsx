@@ -17,27 +17,29 @@ import { set } from "mongoose";
 
 interface DeleteProps {
     id: string;
+    item: string;
 }
 
-const Delete: React.FC<DeleteProps> = ({ id }) => {
+const Delete: React.FC<DeleteProps> = ({ id,item }) => {
     const [loading, setLoading] = React.useState(false);
 
     const onDelete = async () => {
+        const itemType = item;
         try {
-            setLoading(true);
-            const res = await fetch(`/api/collections/${id}`, {
+            setLoading(true);            
+            const res = await fetch(`/api/${itemType}/${id}`, {
                 method: "DELETE",
             });
 
             if (res.ok) {
                 setLoading(false);
-                window.location.href = "/collections";
-                toast.success("Collection deleted successfully");
+                window.location.href = `/${itemType}`;
+                toast.success(`${itemType} deleted successfully`);
             }
         } catch (error) {
             setLoading(false);
             console.log(error);
-            toast.error("Failed to delete collection");
+            toast.error(`Failed to delete ${itemType}`);
         }
     };
     return (

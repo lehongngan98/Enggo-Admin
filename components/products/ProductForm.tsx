@@ -68,14 +68,22 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
     getCollections();
   }, []);
 
+  console.log("initialData media : ", initialData?.media[0]);
+
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData
-      ? initialData
+      ? {
+        ...initialData,
+        category: initialData.category[0],
+        collections: initialData.collections.map((collection) => collection._id),
+        media: initialData.media[0],
+      }
       : {
         title: "",
         media: "",
-        description: "",        
+        description: "",
         category: "",
         collections: [],
         tags: [],
@@ -129,7 +137,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
       {initialData ? (
         <div className="flex items-center justify-between">
           <p className="text-heading2-bold">Edit Product</p>
-          {/* <Delete id={initialData._id} item="product" /> */}
+          <Delete id={initialData._id} item="products" />
         </div>
       ) : (
         <p className="text-heading2-bold">Create Product</p>
@@ -172,7 +180,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
                 <FormMessage />
               </FormItem>
             )}
-          />          
+          />
 
           <FormField
             control={form.control}

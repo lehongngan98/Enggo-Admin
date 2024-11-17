@@ -10,7 +10,7 @@ import { X } from "lucide-react";
 interface MultiTextProps {
   placeholder: string;
   value: string[];
-  onChange: (value: string[]) => void;
+  onChange: (value: string) => void;
   onRemove: (value: string) => void;
 }
 
@@ -23,10 +23,7 @@ const MultiText: React.FC<MultiTextProps> = ({
   const [inputValue, setInputValue] = useState("");
 
   const addValue = (item: string) => {
-    const trimmedItem = item.trim();
-    if (trimmedItem && !value.includes(trimmedItem)) {
-      onChange([...value, trimmedItem]);
-    }
+    onChange(item);
     setInputValue("");
   };
 
@@ -47,7 +44,7 @@ const MultiText: React.FC<MultiTextProps> = ({
       <div className="flex gap-1 flex-wrap mt-4">
         {value.map((item, index) => (
           <Badge key={index} className="bg-grey-1 text-white">
-            <span>{item}</span>
+            {item}
             <button
               className="ml-1 rounded-full outline-none hover:bg-red-1"
               onClick={() => onRemove(item)}
