@@ -46,7 +46,8 @@ export const GET = async (req: NextRequest) => {
     try {
         await connectToDB();
 
-        const news = await News.find().sort({ createdAt: "desc" }).populate('infomation');;
+        // const news = await News.find().sort({ createdAt: "desc" }).populate('infomation');
+        const news = await News.find().sort({ createdAt: "desc" });
 
         console.log("Fetched news:", news); // Add this for debugging
 
