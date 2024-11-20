@@ -21,3 +21,22 @@ type ProductType = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+type NewsType = {
+  _id: string;
+  title: string;
+  content: string;
+  image: string;
+  information: [InformationType];
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+type InformationType = {
+  _id: string;
+  subTitle: string;
+  text: string;
+  image: string;
+  createdAt: Date;
+  updatedAt: Date;
+};

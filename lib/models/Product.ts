@@ -2,7 +2,7 @@ import { create } from "domain";
 import { get } from "http";
 import mongoose from "mongoose";
 
-const ProductSchema = new mongoose.Schema({
+export const ProductSchema = new mongoose.Schema({
   title: String,
   description: String,
   media: [String],

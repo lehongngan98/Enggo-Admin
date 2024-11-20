@@ -46,7 +46,7 @@ export const GET = async (req: NextRequest) => {
     try {
         await connectToDB();
 
-        const collections = await Collection.find().sort({ createdAt: "desc" });
+        const collections = await Collection.find().sort({ createdAt: "desc" }).populate('products');;
 
         console.log("Fetched collections:", collections); // Add this for debugging
 

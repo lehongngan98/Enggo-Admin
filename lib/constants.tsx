@@ -1,5 +1,6 @@
 import {
     LayoutDashboard,
+    Newspaper,
     Shapes,
     ShoppingBag,
     Tag,
@@ -22,10 +23,11 @@ import {
       icon: <Tag />,
       label: "Products",
     },
+
     {
-      url: "/orders",
-      icon: <ShoppingBag />,
-      label: "Orders",
+      url: "/news",
+      icon: <Newspaper />,
+      label: "Newspaper Topic",
     },
     {
       url: "/customers",

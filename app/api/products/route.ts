@@ -35,16 +35,29 @@ export const POST = async (req: NextRequest) => {
       expense,
     });
 
+    // Save the product
     await newProduct.save();
+
+    // Update collections with the new product's ObjectId
+    if (collections) {
+      for (const collectionId of collections) {
+        const collection = await Collection.findById(collectionId);
+        if (collection) {
+          collection.products.push(newProduct._id); // Push only the _id of the new product
+          await collection.save();
+        }
+      }
+    }
+
 
     return NextResponse.json(newProduct, { status: 201 });
 
   } catch (error) {
     console.log("[collections_POST] :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
-
   }
 };
+
 
 
 export const GET = async (req: NextRequest) => {

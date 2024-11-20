@@ -1,22 +1,20 @@
 import mongoose from 'mongoose';
-import Product, { ProductSchema } from './Product';
 
-
-const collectionSchema = new mongoose.Schema({
+const newsSchema = new mongoose.Schema({
     title:{
         type: String,
         required: true,
         unique: true,
     },
-    description: String,
+    content: String,
     image:{
         type: String,
         required: true,
     },
-    products:[
+    information:[
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Product',
+            ref: 'Information',
         }
     ],
 
@@ -30,6 +28,6 @@ const collectionSchema = new mongoose.Schema({
     }
 });
 
-const Collection = mongoose.models.Collection || mongoose.model('Collection', collectionSchema);
+const News = mongoose.models.News || mongoose.model('News', newsSchema);
 
-export default Collection;
+export default News;

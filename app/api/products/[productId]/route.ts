@@ -26,23 +26,47 @@ export const GET = async (req: NextRequest, { params }: { params: { productId: s
   }
 };
 
+
+
 export const DELETE = async (req: NextRequest, { params }: { params: { productId: string } }) => {
   try {
     const { userId } = auth();
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
-    };
+    }
 
     await connectToDB();
 
-    await Product.findByIdAndDelete(params.productId);
+    const productId = params.productId;
 
-    return new NextResponse("Product is deleted!", { status: 200 });
+    // Find the product to access its collections before deletion
+    const product = await Product.findById(productId);
 
+    if (!product) {
+      return new NextResponse("Product not found", { status: 404 });
+    }
+
+    // Remove the product ID from associated collections
+    if (product.collections) {
+      for (const collectionId of product.collections) {
+        const collection = await Collection.findById(collectionId);
+        if (collection) {
+          // Filter out the deleted product's ID from the collection
+          collection.products = collection.products.filter(
+            (id: string) => id.toString() !== productId
+          );
+          await collection.save();
+        }
+      }
+    }
+
+    // Delete the product
+    await Product.findByIdAndDelete(productId);
+
+    return new NextResponse("Product is deleted and references removed from collections!", { status: 200 });
   } catch (error) {
     console.log("[productId_DELETE]", error);
     return new NextResponse("Internal Server Error", { status: 500 });
-
   }
 };

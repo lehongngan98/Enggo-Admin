@@ -8,7 +8,7 @@ import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
-const Products = () => {
+const  Products = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<ProductType[]>([]);
