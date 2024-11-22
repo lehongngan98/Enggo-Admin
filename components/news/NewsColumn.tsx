@@ -34,17 +34,11 @@ export const columns: ColumnDef<NewsType>[] = [
 	},
 	
 
-	// {
-	// 	accessorKey: "infomation",
-	// 	header: "Article",
-	// 	cell: ({ row }) => {
-	// 		const info = row.original.infomation;
-	// 		return <p>{info ? info.length : 0}</p>;
-	// 	},
-	// },
+
 	
 	{
 		id: "actions",
+		header: "Actions",
 		cell: ({ row }) => <Delete id={row.original._id} item="news" />
 	},
 ]

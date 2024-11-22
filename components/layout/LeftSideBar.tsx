@@ -18,7 +18,7 @@ const LeftSideBar = () => {
                 <Image src="/logo.png" width={120} height={120} alt='logo' />
             </div>
 
-            <div className='flex flex-col gap-12'>
+            <div className='flex flex-col gap-12 overflow-y-auto flex-1 scrollbar-none'>
                 {
                     navLinks.map((link) => (
                         <Link
