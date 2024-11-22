@@ -7,7 +7,7 @@ import Link from "next/link"
 
 export const columns: ColumnDef<InformationType>[] = [
 	{
-	  accessorKey: "title",
+	  accessorKey: "subTitle",
 	  header: "Title",
 	  cell: ({ row }) => (<Link href={`/infomation/${row.original._id}`} className="hover:text-red-500 hover:italic">{row.original.subTitle}</Link>),
 	},

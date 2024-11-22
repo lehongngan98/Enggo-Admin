@@ -47,7 +47,7 @@ const  Infomation = () => {
                 </Button>
             </div>
             <Separator className=" bg-grey-1 mt-4" />
-            <DataTable columns={columns} data={infomation} searchKey="title"/>
+            <DataTable columns={columns} data={infomation} searchKey="subTitle"/>
         </div>
   )
 }

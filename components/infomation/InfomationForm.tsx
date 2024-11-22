@@ -72,7 +72,8 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
     getNews();
   }, []);
 
-
+ console.log("initialData :", initialData);
+ 
 
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -80,7 +81,7 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
     defaultValues: initialData
       ? {
         ...initialData,
-        news: initialData.news ? initialData.news.toString() : "",
+        news: initialData.news._id ? initialData.news._id.toString() : "",
       }
       : {
         subTitle: "",
