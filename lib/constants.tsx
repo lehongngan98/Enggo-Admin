@@ -1,4 +1,5 @@
 import {
+  Captions,
     LayoutDashboard,
     Newspaper,
     Shapes,
@@ -30,8 +31,8 @@ import {
       label: "Newspaper Topic",
     },
     {
-      url: "/customers",
-      icon: <UsersRound />,
-      label: "Customers",
+      url: "/infomation",
+      icon: <Captions />,
+      label: "Article",
     },
   ];

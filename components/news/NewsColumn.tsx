@@ -21,21 +21,28 @@ export const columns: ColumnDef<NewsType>[] = [
 		header: "Image",
 		cell: ({ row }) => <img src={row.original.image} alt={row.original.title} className="h-10 w-10 object-cover" />,
 	},
-	// {
-	//   accessorKey: "infomation",
-	//   header: "Article",
-	//   cell: ({ row }) => <p>{row.original.information.length || 0}</p>,
-
-	// },
 	{
 		accessorKey: "infomation",
 		header: "Article",
 		cell: ({ row }) => {
 			const info = row.original.information;
-			return <p>{info ? info.length : 0}</p>;
+			console.log("info :", info);
+			
+			// Kiểm tra nếu `information` là một mảng
+			return <p>{Array.isArray(info) ? info.length : 0}</p>;
 		},
-	}
-	,
+	},
+	
+
+	// {
+	// 	accessorKey: "infomation",
+	// 	header: "Article",
+	// 	cell: ({ row }) => {
+	// 		const info = row.original.infomation;
+	// 		return <p>{info ? info.length : 0}</p>;
+	// 	},
+	// },
+	
 	{
 		id: "actions",
 		cell: ({ row }) => <Delete id={row.original._id} item="news" />

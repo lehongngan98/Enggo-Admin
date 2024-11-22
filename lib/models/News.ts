@@ -1,28 +1,29 @@
+import { info } from 'console';
 import mongoose from 'mongoose';
+import { InfomationSchema } from './Information';
 
 const newsSchema = new mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: true,
         unique: true,
     },
     content: String,
-    image:{
+    image: {
         type: String,
         required: true,
     },
     information:[
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Information',
+            ref: 'Infomation',
         }
-    ],
-
-    createdAt:{
+    ],    
+    createdAt: {
         type: Date,
         default: Date.now,
     },
-    updatedAt:{
+    updatedAt: {
         type: Date,
         default: Date.now,
     }

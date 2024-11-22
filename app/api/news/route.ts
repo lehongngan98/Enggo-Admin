@@ -1,3 +1,4 @@
+import Infomation from "@/lib/models/Information";
 import News from "@/lib/models/News";
 import { connectToDB } from "@/lib/mongoDB";
 import { auth } from "@clerk/nextjs/server";
@@ -46,8 +47,8 @@ export const GET = async (req: NextRequest) => {
     try {
         await connectToDB();
 
-        // const news = await News.find().sort({ createdAt: "desc" }).populate('infomation');
-        const news = await News.find().sort({ createdAt: "desc" });
+        const news = await News.find().sort({ createdAt: "desc" }).populate({ path: "information", model: Infomation });
+        // const news = await News.find().sort({ createdAt: "desc" });
 
         console.log("Fetched news:", news); // Add this for debugging
 

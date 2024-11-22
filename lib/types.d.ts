@@ -3,7 +3,7 @@ type CollectionType = {
   title: string;
   description: string;
   image: string;
-  products: ProfuctType[];
+  products: ProductType[];
 };
 
 type ProductType = {
@@ -27,7 +27,7 @@ type NewsType = {
   title: string;
   content: string;
   image: string;
-  information: [InformationType];
+  information: InformationType[];
   createdAt: Date;
   updatedAt: Date;
 };
@@ -37,6 +37,7 @@ type InformationType = {
   subTitle: string;
   text: string;
   image: string;
+  news: NewsType;
   createdAt: Date;
   updatedAt: Date;
 };
