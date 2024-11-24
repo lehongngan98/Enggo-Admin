@@ -1,7 +1,9 @@
 import {
   Captions,
     LayoutDashboard,
+    LayoutList,
     Newspaper,
+    NotebookText,
     Shapes,
     ShoppingBag,
     Tag,
@@ -35,7 +37,15 @@ import {
       icon: <Captions />,
       label: "Article",
     },
-
     
-    
+    {
+      url: "/exercises",
+      icon: <LayoutList/>,
+      label: "Exercises (fix)",
+    },
+    {
+      url: "/story",
+      icon: <NotebookText />,
+      label: "Story",
+    }
   ];
