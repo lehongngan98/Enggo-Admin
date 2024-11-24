@@ -27,7 +27,7 @@ const formSchema = z.object({
     nameEn: z.string().min(2).max(20),
     nameVn: z.string().min(2).max(20),
     image: z.string(),
-    content: z.string().min(2).max(500).trim(),
+    content: z.string().min(2).trim(),
     words: z.array(
         z.object({
             word: z.string().min(1, "Word cannot be empty"),
@@ -65,7 +65,9 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
             | React.KeyboardEvent<HTMLTextAreaElement>
     ) => {
         if (e.key === "Enter") {
-            e.preventDefault();
+            e.preventDefault(); // Prevent the default Enter behavior (new line)
+            const fieldValue = form.getValues("content");
+            form.setValue("content", fieldValue + "\n\n"); // Append '\n\n' instead of just a line break
         }
     };
 

@@ -12,7 +12,7 @@ const storySchema = new Schema(
     nameVn: { type: String, required: true, trim: true }, // Required and trimmed
     nameEn: { type: String, required: true, trim: true, unique: true }, // Unique for English name
     image: { type: String, required: true }, // Image is required
-    content: { type: String, required: true, maxlength: 500 }, // Max length for content
+    content: { type: String, required: true}, // Max length for content
     words: [wordSchema], // Embedded word schema
   },
   {
