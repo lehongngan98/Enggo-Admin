@@ -90,3 +90,18 @@ type WordType = {
   word: string;
   meaning: string; 
 };
+
+// Topic video types
+type TopicVideoType = {
+  _id: string
+  title: string
+  background: string
+  Items: TopicVideoItem[]
+}
+
+type TopicVideoItem ={
+  _id: string
+  image: string
+  title: string
+  videoId: string
+}

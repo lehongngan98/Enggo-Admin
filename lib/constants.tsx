@@ -4,6 +4,7 @@ import {
     LayoutList,
     Newspaper,
     NotebookText,
+    Play,
     Shapes,
     ShoppingBag,
     Tag,
@@ -47,5 +48,10 @@ import {
       url: "/story",
       icon: <NotebookText />,
       label: "Story",
+    },
+    {
+      url: "/topicvideo",
+      icon: <Play />,
+      label: "Topic Video",
     }
   ];
