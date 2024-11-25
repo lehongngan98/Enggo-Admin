@@ -1,6 +1,7 @@
 "use client";
 import Loader from '@/components/custom ui/Loader';
 import InfomationForm from '@/components/infomation/InfomationForm';
+import { InformationType } from '@/lib/types';
 import { useEffect, useState } from 'react';
 
 

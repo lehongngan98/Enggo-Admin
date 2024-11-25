@@ -122,11 +122,15 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">
-                    <p className="text-heading3-bold">Edit Quote</p>
+                    <p className="text-heading3-bold">
+                        Cập Nhật Trích Dẫn
+                    </p>
                     <Delete id={initialData._id} item="quote" />
                 </div>
             ) : (
-                <p className="text-heading3-bold">Create Quote</p>
+                <p className="text-heading3-bold">
+                    Thêm Trích Dẫn
+                </p>
             )}
             <Separator className=" bg-grey-1 mt-4 mb-6" />
 
@@ -218,7 +222,7 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
                                     onClick={() => removeWordField(index)}
                                     className="bg-red-500 text-white"
                                 >
-                                    Remove
+                                    Xoá
                                 </Button>
                             </div>
                         ))}
@@ -227,7 +231,7 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
                             onClick={addWordField}
                             className="mt-4 bg-blue-1 text-white"
                         >
-                            Add Vocab
+                           Thêm Từ
                         </Button>
                     </FormItem>
 
@@ -237,14 +241,14 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
 
                     <div className="flex gap-10">
                         <Button type="submit" className="bg-blue-1 text-white">
-                            Submit
+                            Xác Nhận
                         </Button>
                         <Button
                             type="button"
                             onClick={() => router.push("/quote")}
                             className="bg-blue-1 text-white"
                         >
-                            Discard
+                            Huỷ
                         </Button>
                     </div>
                 </form>

@@ -35,12 +35,12 @@ import {
     {
       url: "/news",
       icon: <Newspaper />,
-      label: "Newspaper Topic",
+      label: "Chủ Đề Tin Tức",
     },
     {
       url: "/infomation",
       icon: <Captions />,
-      label: "Article",
+      label: "Tin Tức",
     },
     
     {
@@ -51,12 +51,12 @@ import {
     {
       url: "/story",
       icon: <NotebookText />,
-      label: "Câu chuyện",
+      label: "Truyện",
     },
     {
       url: "/topicvideo",
       icon: <Play />,
-      label: "Chủ đề Video",
+      label: "Chủ Đề Video",
     },
     {
       url: "/vocabulary",
@@ -76,7 +76,7 @@ import {
     {
       url: "/bilingualtopic",
       icon: <CaseSensitive/>,
-      label: "Chủ đề song ngữ",
+      label: "Chủ Đề Song Ngữ",
     }
 
   ];

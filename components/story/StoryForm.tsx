@@ -122,11 +122,13 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">
-                    <p className="text-heading3-bold">Edit Story</p>
+                    <p className="text-heading3-bold">Cập nhật Truyện</p>
                     <Delete id={initialData._id} item="collections" />
                 </div>
             ) : (
-                <p className="text-heading3-bold">Create Story</p>
+                <p className="text-heading3-bold">
+                    Thêm mới Truyện
+                </p>
             )}
             <Separator className=" bg-grey-1 mt-4 mb-6" />
 
@@ -169,7 +171,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                         name="image"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Image</FormLabel>
+                                <FormLabel>Hình ảnh</FormLabel>
                                 <FormControl>
                                     <ImageUpload
                                         value={field.value ? [field.value] : []}
@@ -260,14 +262,13 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                     /> */}
 
                     <FormItem>
-                        <FormLabel>Words</FormLabel>
-                        <FormDescription>Add words and their meanings.</FormDescription>
+                        <FormLabel>Từ vựng</FormLabel>                        
 
                         {(form.watch("words") || []).map((word, index) => (
                             <div key={index} className="flex items-center gap-4">
                                 <FormControl>
                                     <Input
-                                        placeholder="Word"
+                                        placeholder="Từ"
                                         value={word.word}
                                         onChange={(e) =>
                                             form.setValue(`words.${index}.word`, e.target.value)
@@ -276,7 +277,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                                 </FormControl>
                                 <FormControl>
                                     <Input
-                                        placeholder="Meaning"
+                                        placeholder="Nghĩa"
                                         value={word.meaning}
                                         onChange={(e) =>
                                             form.setValue(`words.${index}.meaning`, e.target.value)
@@ -288,7 +289,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                                     onClick={() => removeWordField(index)}
                                     className="bg-red-500 text-white"
                                 >
-                                    Remove
+                                    Xóa
                                 </Button>
                             </div>
                         ))}
@@ -297,7 +298,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                             onClick={addWordField}
                             className="mt-4 bg-blue-1 text-white"
                         >
-                            Add Word
+                            Thêm từ vựng
                         </Button>
                     </FormItem>
 
@@ -307,14 +308,14 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
 
                     <div className="flex gap-10">
                         <Button type="submit" className="bg-blue-1 text-white">
-                            Submit
+                            Xác nhận
                         </Button>
                         <Button
                             type="button"
-                            onClick={() => router.push("/collections")}
+                            onClick={() => router.push("/story")}
                             className="bg-blue-1 text-white"
                         >
-                            Discard
+                            Hủy
                         </Button>
                     </div>
                 </form>

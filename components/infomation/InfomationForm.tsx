@@ -35,6 +35,7 @@ import Loader from "../custom ui/Loader";
 import MultiText from "../custom ui/MultiText";
 import MultiSelect from "../custom ui/MultiSelect";
 import { Value } from "@radix-ui/react-select";
+import { InformationType, NewsType } from "@/lib/types";
 
 const formSchema = z.object({
   subTitle: z.string().min(2).max(20),
@@ -52,7 +53,7 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
 
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState<NewsType[]>([]);
-  const [isFocused, setIsFocused] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const getNews = async () => {
     try {
@@ -69,11 +70,8 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
   };
 
   useEffect(() => {
-    getNews();
+    getNews();        
   }, []);
-
- console.log("initialData :", initialData);
- 
 
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -136,21 +134,21 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
     <div className="p-10">
       {initialData ? (
         <div className="flex items-center justify-between">
-          <p className="text-heading2-bold">Edit Article</p>
+          <p className="text-heading2-bold">Cập nhật Tin Tức</p>
           <Delete id={initialData._id} item="infomation" />
         </div>
       ) : (
-        <p className="text-heading2-bold">Create Article</p>
+        <p className="text-heading2-bold">Thêm mới Tin Tức</p>
       )}
       <Separator className="bg-grey-1 mt-4 mb-7" />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
             name="subTitle"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel>Tiêu đề</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Title"
@@ -170,7 +168,7 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
             name="image"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Image</FormLabel>
+                <FormLabel>Hình ảnh</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field.value ? [field.value] : []}
@@ -188,7 +186,7 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
             name="text"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>Chi tiết tin tức</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Description"
@@ -212,21 +210,20 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
             render={({ field }) => (
 
               <FormItem>
-                <FormLabel
-                  className={isFocused ? "opacity-0 h-0" : "opacity-100 h-auto"}
-                >
-                  News
+                <FormLabel>
+                  {!isOpen ? "Loại tin tức" : ""}
                 </FormLabel>
                 <FormControl>
                   <Select
+                    onOpenChange={(open) => setIsOpen(open)} // Cập nhật trạng thái mở/đóng
                     onValueChange={(value) => field.onChange(value)} // Ensure only ID is passed
                     value={field.value} // Bind current value
-                    
+
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a news" />
+                      <SelectValue placeholder="chọn loại tin tức" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       {news.map((item) => (
                         <SelectItem key={item._id} value={item._id.toString()}>
                           {item.title}
@@ -241,16 +238,16 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
           />
 
 
-          <div className="flex gap-10">
+          <div className="flex gap-10 mt-4">
             <Button type="submit" className="bg-blue-1 text-white">
-              Submit
+              Xác nhận
             </Button>
             <Button
               type="button"
               onClick={() => router.push("/infomation")}
               className="bg-blue-1 text-white"
             >
-              Discard
+              Hủy
             </Button>
           </div>
         </form>

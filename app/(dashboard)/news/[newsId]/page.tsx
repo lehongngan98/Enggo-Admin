@@ -4,6 +4,7 @@ import React, { use, useEffect, useState } from "react";
 import Loader from "../../../../components/custom ui/Loader";
 
 import NewsForm from "@/components/news/NewsForm";
+import { NewsType } from "@/lib/types";
 
 const NewsDetail = ({ params }: { params: { newsId: string } }) => {
     const [news, setNews] = useState<NewsType | null>(null);

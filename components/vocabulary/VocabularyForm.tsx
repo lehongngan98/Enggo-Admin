@@ -119,11 +119,13 @@ const VocabularyForm: React.FC<VocabularyProps> = ({ initialData }) => {
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">
-                    <p className="text-heading3-bold">Edit Vocabulary</p>
+                    <p className="text-heading3-bold">Cập nhật Từ vựng</p>
                     <Delete id={initialData._id} item="vocabulary" />
                 </div>
             ) : (
-                <p className="text-heading3-bold">Create Vocabulary</p>
+                <p className="text-heading3-bold">
+                    Thêm mới Từ vựng
+                </p>
             )}
             <Separator className=" bg-grey-1 mt-4 mb-6" />
 
@@ -186,10 +188,13 @@ const VocabularyForm: React.FC<VocabularyProps> = ({ initialData }) => {
 
 
                     <FormItem>
-                        <FormLabel>Vocab</FormLabel>
+                        <FormLabel>
+                            Danh sách từ vựng
+                        </FormLabel>
 
                         {(form.watch("vocab") || []).map((item, index) => (
                             <div key={index} className="flex items-start gap-4 flex-col border rounded-md p-4 w-50">
+                                <p>{index + 1}</p>
                                 <FormControl>
                                     <Input
                                         placeholder="Tiếng Anh"
@@ -214,7 +219,7 @@ const VocabularyForm: React.FC<VocabularyProps> = ({ initialData }) => {
                                     onClick={() => removeWordField(index)}
                                     className="bg-red-500 text-white"
                                 >
-                                    Remove
+                                    Xoá
                                 </Button>
                             </div>
                         ))}
@@ -223,7 +228,7 @@ const VocabularyForm: React.FC<VocabularyProps> = ({ initialData }) => {
                             onClick={addWordField}
                             className="mt-4 bg-blue-1 text-white"
                         >
-                            Add Vocab
+                            Thêm từ mới
                         </Button>
                     </FormItem>
 
@@ -233,14 +238,14 @@ const VocabularyForm: React.FC<VocabularyProps> = ({ initialData }) => {
 
                     <div className="flex gap-10">
                         <Button type="submit" className="bg-blue-1 text-white">
-                            Submit
+                            Xác nhận
                         </Button>
                         <Button
                             type="button"
                             onClick={() => router.push("/vocabulary")}
                             className="bg-blue-1 text-white"
                         >
-                            Discard
+                            Hủy
                         </Button>
                     </div>
                 </form>

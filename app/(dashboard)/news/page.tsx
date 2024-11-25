@@ -39,7 +39,7 @@ const News = () => {
     return (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
-                <p className="text-heading3-bold">Newspaper Topic</p>
+                <p className="text-heading3-bold">Chủ Đề Tin Tức</p>
                 <Button
                     className="ml-2 bg-blue-1 text-white"
                     onClick={() => {
@@ -47,7 +47,7 @@ const News = () => {
                     }}
                 >
                     <Plus className="h-4 w-4 mr-2" />
-                    Create Newspaper Topic
+                    Thêm Mới
                 </Button>
             </div>
             <Separator className=" bg-grey-1 mt-4" />

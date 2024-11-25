@@ -9,22 +9,22 @@ import { StoryType, TopicVideoType } from "@/lib/types"
 export const columns: ColumnDef<TopicVideoType>[] = [
 	{
 		accessorKey: "title",
-		header: "Title",
+		header: "Tiêu đề",
 		cell: ({ row }) => (<Link href={`/topicvideo/${row.original._id}`} className="hover:text-red-500 hover:italic">{row.original.title}</Link>),
 	},
 	{
 		accessorKey: "background",
-		header: "Image background",
+		header: "Hình ảnh",
 		cell: ({ row }) => <img src={row.original.background} alt="image" className="w-20 h-20" />,
 	},
 	{
 		accessorKey: "Items",
-		header: "Items",
+		header: "Số video",
 		cell: ({ row }) => <p>{row.original.Items.length}</p>,
 	},
 	{
 		id: "actions",
-		header: "Actions",
+		header: "Hành động",
 		cell: ({ row }) => <Delete id={row.original._id} item="topicvideo" />
 	},
 ]

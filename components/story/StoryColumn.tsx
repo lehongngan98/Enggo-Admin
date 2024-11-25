@@ -29,7 +29,7 @@ export const columns: ColumnDef<StoryType>[] = [
 	},
 	{
 	  id: "actions",
-		header: "Actions",		 		   				
-		cell: ({row}) => <Delete id={row.original._id} item="collections"/>
+		header: "Hành động",		 		   				
+		cell: ({row}) => <Delete id={row.original._id} item="story"/>
 	},
   ]

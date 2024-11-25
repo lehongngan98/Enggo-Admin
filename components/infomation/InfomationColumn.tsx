@@ -3,31 +3,32 @@
 import { ColumnDef } from "@tanstack/react-table"
 import Delete from "../custom ui/Delete"
 import Link from "next/link"
+import { InformationType } from "@/lib/types"
 
 
 export const columns: ColumnDef<InformationType>[] = [
 	{
 		accessorKey: "subTitle",
-		header: "Title",
+		header: "Tiêu Đề",
 		cell: ({ row }) => (<Link href={`/infomation/${row.original._id}`} className="hover:text-red-500 hover:italic">{row.original.subTitle}</Link>),
 	},
 	{
 		accessorKey: "text",
-		header: "Text",
+		header: "Nội Dung",
 	},
 	{
 		accessorKey: "image",
-		header: "Image",
+		header: "Hình Ảnh",
 		cell: ({ row }) => <img src={row.original.image} alt={row.original.subTitle} className="h-10 w-10 object-cover" />,
 	},
 	{
 		accessorKey: "news",
-		header: "Type of News",
+		header: "Loại Tin Tức",
 		cell: ({ row }) => <div className="hover:text-red-500 hover:italic">{row.original.news.title}</div>,
 	},
 	{
 		id: "actions",
-		header: "Actions",
+		header: "Hành Động",
 		cell: ({ row }) => <Delete id={row.original._id} item="infomation" />
 	},
 ]

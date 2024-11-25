@@ -24,7 +24,7 @@ export const columns: ColumnDef<QuoteType>[] = [
 	},
 	{
 		id: "actions",
-		header: "Actions",
+		header: "Hành động",
 		cell: ({ row }) => <Delete id={row.original._id} item="quote" />
 	},
 ]

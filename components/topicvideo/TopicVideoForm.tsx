@@ -118,15 +118,18 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">
-                    <p className="text-heading3-bold">Edit Topic Video</p>
+                    <p className="text-heading3-bold">Cập nhật chủ đề video</p>
                     <Delete id={initialData._id} item="topicvideo" />
                 </div>
             ) : (
-                <p className="text-heading3-bold">Create Topic Video</p>
+                <p className="text-heading3-bold">
+                    Tạo mới chủ đề video
+                </p>
             )}
             <Separator className=" bg-grey-1 mt-4 mb-6" />
 
             <Form {...form}>
+                
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-8"
@@ -136,7 +139,9 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                         name="title"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Title</FormLabel>
+                                <FormLabel>
+                                    Tiêu đề
+                                </FormLabel>
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
@@ -152,7 +157,9 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                         name="background"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Image</FormLabel>
+                                <FormLabel>
+                                    Hình ảnh chủ đề
+                                </FormLabel>
                                 <FormControl>
                                     <ImageUpload
                                         value={field.value ? [field.value] : []}
@@ -171,13 +178,16 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                     
 
                     <FormItem>
-                        <FormLabel>Items</FormLabel>                        
+                        <FormLabel>
+                            Danh sách video
+                        </FormLabel>                        
 
                         {(form.watch("Items") || []).map((item, index) => (
                             <div key={index} className="flex items-start gap-4 flex-col border rounded-md p-4 w-50">
+                                <p>{index+1}</p>
                                 <FormControl>
                                     <Input
-                                        placeholder="Title"
+                                        placeholder="Tiêu đề"
                                         value={item.title}
                                         onChange={(e) =>
                                             form.setValue(`Items.${index}.title`, e.target.value)
@@ -186,7 +196,7 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                                 </FormControl>
                                 <FormControl>
                                     <Input
-                                        placeholder="videoId"
+                                        placeholder="Video ID"
                                         value={item.videoId}
                                         onChange={(e) =>
                                             form.setValue(`Items.${index}.videoId`, e.target.value)
@@ -207,7 +217,7 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                                     onClick={() => removeWordField(index)}
                                     className="bg-red-500 text-white"
                                 >
-                                    Remove
+                                    Xoá
                                 </Button>
                             </div>
                         ))}
@@ -216,7 +226,7 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                             onClick={addWordField}
                             className="mt-4 bg-blue-1 text-white"
                         >
-                            Add Item
+                            Thêm video
                         </Button>
                     </FormItem>
 
@@ -226,14 +236,14 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
 
                     <div className="flex gap-10">
                         <Button type="submit" className="bg-blue-1 text-white">
-                            Submit
+                            Xác nhận
                         </Button>
                         <Button
                             type="button"
-                            onClick={() => router.push("/collections")}
+                            onClick={() => router.push("/topicvideo")}
                             className="bg-blue-1 text-white"
                         >
-                            Discard
+                            Huỷ
                         </Button>
                     </div>
                 </form>

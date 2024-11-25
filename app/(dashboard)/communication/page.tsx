@@ -40,7 +40,9 @@ const Communication = () => {
     return (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
-                <p className="text-heading3-bold">Communication</p>
+                <p className="text-heading3-bold">
+                    Giao tiếp
+                </p>
                 <Button
                     className="ml-2 bg-blue-1 text-white"
                     onClick={() => {
@@ -48,7 +50,7 @@ const Communication = () => {
                     }}
                 >
                     <Plus className="h-4 w-4 mr-2" />
-                    Create Communication
+                    Thêm mới
                 </Button>
             </div>
             <Separator className=" bg-grey-1 mt-4" />

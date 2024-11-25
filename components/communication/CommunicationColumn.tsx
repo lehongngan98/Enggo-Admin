@@ -29,7 +29,7 @@ export const columns: ColumnDef<CommunicationType>[] = [
 	},
 	{
 		id: "actions",
-		header: "Actions",
+		header: "Hành động",
 		cell: ({ row }) => <Delete id={row.original._id} item="communication" />
 	},
 ]

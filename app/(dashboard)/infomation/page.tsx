@@ -5,6 +5,7 @@ import { columns } from '@/components/infomation/InfomationColumn';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { InformationType } from '@/lib/types';
 import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
@@ -35,7 +36,7 @@ const  Infomation = () => {
   return loading ? <Loader /> : (
     <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
-                <p className="text-heading3-bold">Article</p>
+                <p className="text-heading3-bold">Bài Báo</p>
                 <Button
                     className="ml-2 bg-blue-1 text-white"
                     onClick={() => {
@@ -43,7 +44,7 @@ const  Infomation = () => {
                     }}
                 >
                     <Plus className="h-4 w-4 mr-2" />
-                    Create Article
+                    Thêm Bài Báo
                 </Button>
             </div>
             <Separator className=" bg-grey-1 mt-4" />

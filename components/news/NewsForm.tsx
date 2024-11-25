@@ -21,6 +21,7 @@ import ImageUpload from "../custom ui/ImageUpload";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Delete from "../custom ui/Delete";
+import { NewsType } from "@/lib/types";
 
 const formSchema = z.object({
     title: z.string().min(2).max(20),
@@ -93,11 +94,11 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">
-                    <p className="text-heading3-bold">Edit News</p>
+                    <p className="text-heading3-bold">Cập nhật Chủ Đề Tin Tức</p>
                     <Delete id={initialData._id} item="news"/>
                 </div>
             ) : (
-                <p className="text-heading3-bold">Create News</p>
+                <p className="text-heading3-bold">Thêm Mới</p>
             )}
             <Separator className=" bg-grey-1 mt-4 mb-6" />
 
@@ -111,7 +112,7 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
                         name="title"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Title</FormLabel>
+                                <FormLabel>Tiêu đề</FormLabel>
                                 <FormControl>
                                     <Input placeholder="Title" {...field} onKeyDown={handleKeyPress}/>
                                 </FormControl>
@@ -125,7 +126,7 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
                         name="content"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Content</FormLabel>
+                                <FormLabel>Nội dung</FormLabel>
                                 <FormControl>
                                     <Textarea
                                         placeholder="Content"
@@ -144,7 +145,7 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
                         name="image"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Image</FormLabel>
+                                <FormLabel>Hình ảnh</FormLabel>
                                 <FormControl>
                                     <ImageUpload
                                         value={field.value ? [field.value] : []}
@@ -159,14 +160,14 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
 
                     <div className="flex gap-10">
                         <Button type="submit" className="bg-blue-1 text-white">
-                            Submit
+                            Xác nhận
                         </Button>
                         <Button
                             type="button"
                             onClick={() => router.push("/news")}
                             className="bg-blue-1 text-white"
                         >
-                            Discard
+                            Hủy
                         </Button>
                     </div>
                 </form>

@@ -39,7 +39,7 @@ const Story = () => {
     return (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
-                <p className="text-heading3-bold">Story</p>
+                <p className="text-heading3-bold">Truyện</p>
                 <Button
                     className="ml-2 bg-blue-1 text-white"
                     onClick={() => {
@@ -47,7 +47,7 @@ const Story = () => {
                     }}
                 >
                     <Plus className="h-4 w-4 mr-2" />
-                    Create Story
+                    Thêm truyện
                 </Button>
             </div>
             <Separator className=" bg-grey-1 mt-4" />
