@@ -1,4 +1,5 @@
 import {
+  ALargeSmall,
   Captions,
     LayoutDashboard,
     LayoutList,
@@ -53,5 +54,11 @@ import {
       url: "/topicvideo",
       icon: <Play />,
       label: "Topic Video",
+    },
+    {
+      url: "/vocabulary",
+      icon: <ALargeSmall/>,
+      label: "Vocabulary",
     }
+
   ];

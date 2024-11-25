@@ -105,3 +105,18 @@ type TopicVideoItem ={
   title: string
   videoId: string
 }
+
+// Vocabulary types
+type VocabularyType = {
+  _id: string
+  image: string
+  titleEn: string
+  titleVn: string
+  vocab: Vocab[]
+}
+
+type Vocab ={
+  _id: string
+  en: string
+  vn: string
+}

@@ -11,7 +11,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { TopicVideoType } from "@/lib/types";
+import { TopicVideoType, VocabularyType } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -23,23 +23,23 @@ import ImageUpload from "../custom ui/ImageUpload";
 import { Separator } from "../ui/separator";
 
 const formSchema = z.object({
-    title: z.string().min(2).max(20),    
-    background: z.string(),    
-    Items: z.array(
+    titleEn: z.string().min(2).max(20),
+    titleVn: z.string().min(2).max(20),
+    image: z.string(),
+    vocab: z.array(
         z.object({
-            image: z.string(),
-            title: z.string().min(1),
-            videoId: z.string().min(1),
+            en: z.string(),
+            vn: z.string()
         })
     )
         .optional(),
 });
 
-interface TopicVideoProps {
-    initialData?: TopicVideoType | null;
+interface VocabularyProps {
+    initialData?: VocabularyType | null;
 }
 
-const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
+const VocabularyForm: React.FC<VocabularyProps> = ({ initialData }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -48,9 +48,10 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
         defaultValues: initialData
             ? initialData
             : {
-                title: "",
-                background: "",
-                Items: [{ image: "", title: "", videoId: "" }],                
+                titleEn: "",
+                titleVn: "",
+                image: "",
+                vocab: [{ en: "", vn: "" }],
             },
 
     });
@@ -72,8 +73,8 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
             setIsLoading(true);
 
             const url = initialData
-                ? `/api/topicvideo/${initialData._id}`
-                : "/api/topicvideo";
+                ? `/api/vocabulary/${initialData._id}`
+                : "/api/vocabulary";
             console.log(url);
 
             const res = await fetch(url, {
@@ -87,30 +88,30 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
             if (res.ok) {
                 setIsLoading(false);
                 toast.success(
-                    `Topic Video ${initialData ? "Updated" : "Create"}!`
+                    `Vocabulary ${initialData ? "Updated" : "Create"}!`
                 );
-                window.location.href = "/topicvideo";
-                router.push("/topicvideo");
+                window.location.href = "/vocabulary";
+                router.push("/vocabulary");
             }
         } catch (error) {
             setIsLoading(false);
-            console.log("[story_POST] :", error);
+            console.log("[vocabulary_POST] :", error);
             toast.error("Something went wrong! Please try again.");
         }
     };
 
 
     const addWordField = () => {
-        const items = form.getValues("Items") || [];
-        form.setValue("Items", [...items, { image: "", title: "" ,videoId:""}], {
+        const items = form.getValues("vocab") || [];
+        form.setValue("vocab", [...items, { vn: "", en: "" }], {
             shouldValidate: true,
         });
     };
 
     const removeWordField = (index: number) => {
-        const items = form.getValues("Items") || [];
+        const items = form.getValues("vocab") || [];
         const updatedItems = items.filter((_, i) => i !== index);
-        form.setValue("Items", updatedItems, { shouldValidate: true });
+        form.setValue("vocab", updatedItems, { shouldValidate: true });
     };
 
 
@@ -118,11 +119,11 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">
-                    <p className="text-heading3-bold">Edit Topic Video</p>
-                    <Delete id={initialData._id} item="topicvideo" />
+                    <p className="text-heading3-bold">Edit Vocabulary</p>
+                    <Delete id={initialData._id} item="vocabulary" />
                 </div>
             ) : (
-                <p className="text-heading3-bold">Create Topic Video</p>
+                <p className="text-heading3-bold">Create Vocabulary</p>
             )}
             <Separator className=" bg-grey-1 mt-4 mb-6" />
 
@@ -133,10 +134,10 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                 >
                     <FormField
                         control={form.control}
-                        name="title"
+                        name="titleEn"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Title</FormLabel>
+                                <FormLabel>Chủ đề(tiếng anh)</FormLabel>
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
@@ -145,14 +146,28 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                         )}
                     />
 
-                    
+                    <FormField
+                        control={form.control}
+                        name="titleVn"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Chủ đề(tiếng việt)</FormLabel>
+                                <FormControl>
+                                    <Input  {...field} onKeyDown={handleKeyPress} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+
 
                     <FormField
                         control={form.control}
-                        name="background"
+                        name="image"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Image</FormLabel>
+                                <FormLabel>Hình ảnh</FormLabel>
                                 <FormControl>
                                     <ImageUpload
                                         value={field.value ? [field.value] : []}
@@ -168,40 +183,32 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
 
 
                     {/* Other fields */}
-                    
+
 
                     <FormItem>
-                        <FormLabel>Items</FormLabel>                        
+                        <FormLabel>Vocab</FormLabel>
 
-                        {(form.watch("Items") || []).map((item, index) => (
+                        {(form.watch("vocab") || []).map((item, index) => (
                             <div key={index} className="flex items-start gap-4 flex-col border rounded-md p-4 w-50">
                                 <FormControl>
                                     <Input
-                                        placeholder="Title"
-                                        value={item.title}
+                                        placeholder="Tiếng Anh"
+                                        value={item.en}
                                         onChange={(e) =>
-                                            form.setValue(`Items.${index}.title`, e.target.value)
+                                            form.setValue(`vocab.${index}.en`, e.target.value)
                                         }
                                     />
                                 </FormControl>
                                 <FormControl>
                                     <Input
-                                        placeholder="videoId"
-                                        value={item.videoId}
+                                        placeholder="Tiếng Việt"
+                                        value={item.vn}
                                         onChange={(e) =>
-                                            form.setValue(`Items.${index}.videoId`, e.target.value)
+                                            form.setValue(`vocab.${index}.vn`, e.target.value)
                                         }
                                     />
                                 </FormControl>
-                                <FormControl>
-                                    <ImageUpload
-                                        value={item.image ? [item.image] : []}
-                                        onChange={(url) =>
-                                            form.setValue(`Items.${index}.image`, url)
-                                        }
-                                        onRemove={() => form.setValue(`Items.${index}.image`, "")}
-                                    />
-                                </FormControl>
+                                
                                 <Button
                                     type="button"
                                     onClick={() => removeWordField(index)}
@@ -216,7 +223,7 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                             onClick={addWordField}
                             className="mt-4 bg-blue-1 text-white"
                         >
-                            Add Item
+                            Add Vocab
                         </Button>
                     </FormItem>
 
@@ -230,7 +237,7 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                         </Button>
                         <Button
                             type="button"
-                            onClick={() => router.push("/collections")}
+                            onClick={() => router.push("/vocabulary")}
                             className="bg-blue-1 text-white"
                         >
                             Discard
@@ -242,4 +249,4 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
     );
 };
 
-export default TopicVideoForm;
+export default VocabularyForm;
