@@ -9,6 +9,7 @@ import {
     Shapes,
     ShoppingBag,
     Tag,
+    TextQuote,
     UsersRound,
   } from "lucide-react";
   
@@ -59,6 +60,11 @@ import {
       url: "/vocabulary",
       icon: <ALargeSmall/>,
       label: "Vocabulary",
+    },
+    {
+      url: "/quote",
+      icon: <TextQuote/>,
+      label: "Quote",
     }
 
   ];

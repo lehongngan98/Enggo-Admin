@@ -120,3 +120,19 @@ type Vocab ={
   en: string
   vn: string
 }
+
+// Quote types
+type QuoteType = {
+  _id: string
+  author: string
+  text: string
+  words: QuoteWord[]
+}
+
+export interface QuoteWord {
+  _id: string
+  word: string
+  pronunciation: string
+  meaning: string
+  type: string
+}
