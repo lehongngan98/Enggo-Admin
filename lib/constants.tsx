@@ -1,6 +1,7 @@
 import {
   ALargeSmall,
   Captions,
+    CaseSensitive,
     LayoutDashboard,
     LayoutList,
     Newspaper,
@@ -71,6 +72,11 @@ import {
       url: "/communication",
       icon: <Speech/>,
       label: "Giao Tiếp",
+    },
+    {
+      url: "/bilingualtopic",
+      icon: <CaseSensitive/>,
+      label: "Chủ đề song ngữ",
     }
 
   ];

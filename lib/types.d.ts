@@ -145,3 +145,16 @@ type CommunicationType = {
   titleVn: string
   vocab: Vocab[]
 }
+
+// BilingualTopics type
+type BilingualTopicsType = {
+  _id: string
+  topic: string
+  subTopic: SubTopic[]
+}
+type SubTopic = {
+  _id: string
+  titleEn: string
+  titleVn: string
+  text: string
+}
