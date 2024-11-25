@@ -136,3 +136,12 @@ export interface QuoteWord {
   meaning: string
   type: string
 }
+
+// communication types
+type CommunicationType = {
+  _id: string
+  image: string
+  titleEn: string
+  titleVn: string
+  vocab: Vocab[]
+}

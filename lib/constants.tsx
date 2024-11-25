@@ -8,6 +8,7 @@ import {
     Play,
     Shapes,
     ShoppingBag,
+    Speech,
     Tag,
     TextQuote,
     UsersRound,
@@ -44,27 +45,32 @@ import {
     {
       url: "/exercises",
       icon: <LayoutList/>,
-      label: "Exercises (fix)",
+      label: "Bài Tập (fix)",
     },
     {
       url: "/story",
       icon: <NotebookText />,
-      label: "Story",
+      label: "Câu chuyện",
     },
     {
       url: "/topicvideo",
       icon: <Play />,
-      label: "Topic Video",
+      label: "Chủ đề Video",
     },
     {
       url: "/vocabulary",
       icon: <ALargeSmall/>,
-      label: "Vocabulary",
+      label: "Tự Vựng",
     },
     {
       url: "/quote",
       icon: <TextQuote/>,
-      label: "Quote",
+      label: "Trích Dẫn",
+    },
+    {
+      url: "/communication",
+      icon: <Speech/>,
+      label: "Giao Tiếp",
     }
 
   ];
