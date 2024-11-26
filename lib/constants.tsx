@@ -13,6 +13,7 @@ import {
     Tag,
     TextQuote,
     UsersRound,
+    Youtube,
   } from "lucide-react";
   
   export const navLinks = [
@@ -77,6 +78,11 @@ import {
       url: "/bilingualtopic",
       icon: <CaseSensitive/>,
       label: "Chủ Đề Song Ngữ",
+    },
+    {
+      url: "/channel",
+      icon: <Youtube/>,
+      label: "Kênh Học Youtube",
     }
 
   ];

@@ -158,3 +158,11 @@ type SubTopic = {
   titleVn: string
   text: string
 }
+
+// Channel types
+type ChannelType = {
+  _id: string
+  title: string  
+  description: string
+  channelId: string
+}
