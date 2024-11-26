@@ -6,6 +6,7 @@ const nextConfig = {
     },
     experimental: {
         runtime: 'edge',
+        serverActions: true,
     },
 };
 
