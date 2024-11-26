@@ -2,6 +2,7 @@
 
 import { columns } from "@/components/bilingualtopic/BilingualTopicColumn";
 import { DataTable } from "@/components/custom ui/DataTable";
+import Loader from '@/components/custom ui/Loader';
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -11,7 +12,7 @@ import { useEffect, useState } from "react";
 
 const BilingualTopic = () => {
     const router = useRouter();
-    const [ setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [bilingualtopic, setBilingualTopic] = useState([]);
 
     const getBilingualTopic = async () => {
@@ -37,7 +38,8 @@ const BilingualTopic = () => {
 
     console.log(bilingualtopic);
 
-    return (
+    return loading? <Loader/> :
+    (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
                 <p className="text-heading3-bold">Chủ đề song ngữ</p>

@@ -7,11 +7,11 @@ import Loader from "../../../../components/custom ui/Loader";
 
 const VocabularyDetail = ({ params }: { params: { vocabularyId: string } }) => {
     const [vocabulary, setVocabulary] = useState<VocabularyType | null>(null);
-    const [setLoading] = useState(true);
+    const [loading,setLoading] = useState(true);
 
     useEffect(() => {
         getVocabularyDetail();
-    }, [getVocabularyDetail]);
+    }, []);
     console.log(vocabulary);
 
     const getVocabularyDetail = async () => {

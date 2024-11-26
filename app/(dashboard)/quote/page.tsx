@@ -1,5 +1,5 @@
 "use client";
-
+import Loader from '@/components/custom ui/Loader';
 import { DataTable } from "@/components/custom ui/DataTable";
 import { columns } from "@/components/quote/QuoteColumn";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Quote = () => {
     const router = useRouter();
-    const [ setLoading] = useState(true);
+    const [ loading,setLoading] = useState(true);
     const [Quote, setQuote] = useState([]);
 
     const getQuote = async () => {
@@ -36,7 +36,8 @@ const Quote = () => {
 
     console.log(Quote);
 
-    return (
+    return loading? <Loader/> :
+    (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
                 <p className="text-heading3-bold">Trích Dẫn</p>

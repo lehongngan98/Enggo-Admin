@@ -7,10 +7,11 @@ import { Separator } from "@/components/ui/separator";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loader from '@/components/custom ui/Loader';
 
 const Vocabulary = () => {
     const router = useRouter();
-    const [setLoading] = useState(true);
+    const [loading,setLoading] = useState(true);
     const [Vocabulary, setVocabulary] = useState([]);
 
     const getVocabulary = async () => {
@@ -36,7 +37,8 @@ const Vocabulary = () => {
 
     console.log(Vocabulary);
 
-    return (
+    return loading? <Loader/> :
+    (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
                 <p className="text-heading3-bold">Từ Vựng</p>

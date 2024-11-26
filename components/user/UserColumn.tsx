@@ -10,7 +10,7 @@ export const columns: ColumnDef<UserType>[] = [
 	{
 		accessorKey: "fullname",
 		header: "Họ và tên",
-		cell: ({ row }) => (<Link href={`/user/${row.original._id}`} className="hover:text-red-500 hover:italic">{row.original.fullname}</Link>),
+		cell: ({ row }) => row.original.fullname,
 	},
 	{
 		accessorKey: "email",

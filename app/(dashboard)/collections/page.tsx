@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 const Collections = () => {
     const router = useRouter();
-    const [ setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [collections, setCollections] = useState([]);
 
     const getCollections = async () => {
@@ -35,7 +35,8 @@ const Collections = () => {
 
     console.log(collections);
 
-    return (
+    return  loading ? <Loader /> :
+    (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
                 <p className="text-heading3-bold">Collections</p>

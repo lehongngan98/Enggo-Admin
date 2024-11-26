@@ -11,7 +11,7 @@ const BilingualTopicDetail = ({ params }: { params: { bilingualtopicId: string }
 
     useEffect(() => {
         getBilingualTopicDetail();
-    }, [getBilingualTopicDetail]);
+    }, []);
     console.log(bilingualtopic);
 
     const getBilingualTopicDetail = async () => {

@@ -11,7 +11,7 @@ const ChannelDetail = ({ params }: { params: { channelId: string } }) => {
 
     useEffect(() => {
         getChannelDetail();
-    }, [getChannelDetail]);
+    }, []);
     console.log(channel);
 
     const getChannelDetail = async () => {

@@ -3,14 +3,14 @@
 
 import { DataTable } from "@/components/custom ui/DataTable";
 import { columns } from "@/components/user/UserColumn";
-
+import Loader from '@/components/custom ui/Loader';
 import { Separator } from "@/components/ui/separator";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const User = () => {
     const router = useRouter();
-    const [setLoading] = useState(true);
+    const [loading,setLoading] = useState(true);
     const [user, setuser] = useState([]);
 
     const getuser = async () => {
@@ -36,7 +36,8 @@ const User = () => {
 
     console.log(user);
 
-    return (
+    return loading? <Loader/> :
+    (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
                 <p className="text-heading3-bold">

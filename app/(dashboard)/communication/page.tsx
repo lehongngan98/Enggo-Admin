@@ -2,7 +2,7 @@
 
 import { columns } from "@/components/communication/CommunicationColumn";
 import { DataTable } from "@/components/custom ui/DataTable";
-
+import Loader from '@/components/custom ui/Loader';
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Plus } from "lucide-react";
@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 const Communication = () => {
     const router = useRouter();
-    const [setLoading] = useState(true);
+    const [loading,setLoading] = useState(true);
     const [communication, setcommunication] = useState([]);
 
     const getcommunication = async () => {
@@ -37,7 +37,8 @@ const Communication = () => {
 
     console.log(communication);
 
-    return (
+    return loading? <Loader/> :
+    (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
                 <p className="text-heading3-bold">
