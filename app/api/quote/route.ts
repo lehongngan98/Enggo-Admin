@@ -1,4 +1,4 @@
-import Quote from "@/lib/models/quote"; // Import the Quote model
+import Quote from "@/lib/models/Quote"; // Import the Quote model
 import { connectToDB } from "@/lib/mongoDB";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
