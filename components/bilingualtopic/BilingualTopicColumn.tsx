@@ -1,6 +1,6 @@
 "use client"
 
-import { BilingualTopicsType, CommunicationType } from "@/lib/types"
+import { BilingualTopicsType } from "@/lib/types"
 import { ColumnDef } from "@tanstack/react-table"
 import Link from "next/link"
 import Delete from "../custom ui/Delete"

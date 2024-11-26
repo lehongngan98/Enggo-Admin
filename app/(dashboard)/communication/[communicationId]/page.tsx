@@ -12,7 +12,7 @@ const CommunicationDetail = ({ params }: { params: { communicationId: string } }
 
     useEffect(() => {
         getCommunicationDetail();
-    }, []);
+    }, [getCommunicationDetail]);
     console.log(Communication);
 
     const getCommunicationDetail = async () => {

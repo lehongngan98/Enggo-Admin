@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Story = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
     const [story, setStory] = useState([]);
 
     const getStory = async () => {

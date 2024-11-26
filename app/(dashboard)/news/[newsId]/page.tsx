@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Loader from "../../../../components/custom ui/Loader";
 
 import NewsForm from "@/components/news/NewsForm";

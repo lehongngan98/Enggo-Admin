@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const User = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
     const [user, setuser] = useState([]);
 
     const getuser = async () => {

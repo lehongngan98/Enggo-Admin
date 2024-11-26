@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 const Collections = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [ setLoading] = useState(true);
     const [collections, setCollections] = useState([]);
 
     const getCollections = async () => {

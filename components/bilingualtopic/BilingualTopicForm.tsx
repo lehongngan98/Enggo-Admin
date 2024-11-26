@@ -3,15 +3,14 @@
 import { Button } from "@/components/ui/button";
 import {
     Form,
-    FormControl,
-    FormDescription,
+    FormControl,    
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { BilingualTopicsType, CommunicationType, TopicVideoType, VocabularyType } from "@/lib/types";
+import { BilingualTopicsType } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -19,7 +18,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 import Delete from "../custom ui/Delete";
-import ImageUpload from "../custom ui/ImageUpload";
+
 import { Separator } from "../ui/separator";
 import { Textarea } from "../ui/textarea";
 
@@ -41,7 +40,7 @@ interface BilingualTopicsProps {
 
 const BilingualTopicForm: React.FC<BilingualTopicsProps> = ({ initialData }) => {
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(false);
+    const [ setIsLoading] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

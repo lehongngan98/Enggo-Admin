@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 const BilingualTopic = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [ setLoading] = useState(true);
     const [bilingualtopic, setBilingualTopic] = useState([]);
 
     const getBilingualTopic = async () => {

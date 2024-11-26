@@ -1,4 +1,3 @@
-import Channel from "@/lib/models/Channel";
 import User from "@/lib/models/User";
 import { connectToDB } from "@/lib/mongoDB"; // Kết nối cơ sở dữ liệu
 import { auth } from "@clerk/nextjs/server"; // Xác thực từ Clerk

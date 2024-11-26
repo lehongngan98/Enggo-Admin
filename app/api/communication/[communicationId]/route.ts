@@ -1,5 +1,4 @@
 import Communication from "@/lib/models/Communication";
-import TopicVideo from "@/lib/models/TopicVideo"; // Import mô hình TopicVideo
 
 import { connectToDB } from "@/lib/mongoDB"; // Kết nối cơ sở dữ liệu
 import { auth } from "@clerk/nextjs/server"; // Xác thực từ Clerk

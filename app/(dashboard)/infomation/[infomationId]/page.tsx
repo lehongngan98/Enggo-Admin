@@ -11,7 +11,7 @@ const InfomationDetail = ({params}: {params : { infomationId: string} }) => {
 
     useEffect(() => {
       getInfomationDetail();
-    }, []);
+    }, [getInfomationDetail]);
     console.log(InfomationDetail);
 
     const getInfomationDetail = async () => {

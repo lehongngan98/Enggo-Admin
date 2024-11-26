@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Quote = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [ setLoading] = useState(true);
     const [Quote, setQuote] = useState([]);
 
     const getQuote = async () => {

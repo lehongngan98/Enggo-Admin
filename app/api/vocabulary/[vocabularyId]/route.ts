@@ -1,4 +1,4 @@
-import TopicVideo from "@/lib/models/TopicVideo"; // Import mô hình TopicVideo
+
 import Vocabulary from "@/lib/models/Vocabulary";
 import { connectToDB } from "@/lib/mongoDB"; // Kết nối cơ sở dữ liệu
 import { auth } from "@clerk/nextjs/server"; // Xác thực từ Clerk

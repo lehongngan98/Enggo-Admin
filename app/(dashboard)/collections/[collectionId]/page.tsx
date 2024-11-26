@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Loader from "../../../../components/custom ui/Loader";
 import CollectionForm from "@/components/collections/CollectionForm";
 
@@ -10,7 +10,7 @@ const CollectionDetail = ({ params }: { params: { collectionId: string } }) => {
 
     useEffect(() => {
         getCollection();
-    }, []);
+    }, [getCollection]);
     console.log(collection);
 
     const getCollection = async () => {

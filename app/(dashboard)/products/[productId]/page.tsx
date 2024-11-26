@@ -10,7 +10,7 @@ const ProductDetail = ({params}: {params : { productId: string} }) => {
 
     useEffect(() => {
       getProductDetail();
-    }, []);
+    }, [getProductDetail]);
     console.log(productDetail);
 
     const getProductDetail = async () => {

@@ -1,7 +1,6 @@
-import BilingualTopics from "@/lib/models/BilingualTopic";
+
 import Channel from "@/lib/models/Channel";
-import Communication from "@/lib/models/Communication";
-import Vocabulary from "@/lib/models/Vocabulary"; // Import mô hình Vocabulary
+
 import { connectToDB } from "@/lib/mongoDB";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";

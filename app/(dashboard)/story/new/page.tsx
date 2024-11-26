@@ -1,4 +1,3 @@
-import CollectionForm from '@/components/collections/CollectionForm'
 import StoryForm from '@/components/story/StoryForm'
 import React from 'react'
 

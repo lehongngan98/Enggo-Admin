@@ -11,7 +11,7 @@ const QuoteDetail = ({ params }: { params: { quoteId: string } }) => {
 
     useEffect(() => {
         getQuoteDetail();
-    }, []);
+    }, [getQuoteDetail]);
     console.log(Quote);
 
     const getQuoteDetail = async () => {

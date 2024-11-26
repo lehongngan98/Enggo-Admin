@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Vocabulary = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
     const [Vocabulary, setVocabulary] = useState([]);
 
     const getVocabulary = async () => {

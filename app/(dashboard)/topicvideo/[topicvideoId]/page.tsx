@@ -7,11 +7,11 @@ import Loader from "../../../../components/custom ui/Loader";
 
 const TopicVideoDetail = ({ params }: { params: { topicvideoId: string } }) => {
     const [topicVideo, setTopicVideo] = useState<TopicVideoType | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
 
     useEffect(() => {
         getTopicVideoDetail();
-    }, []);
+    }, [getTopicVideoDetail]);
     console.log(topicVideo);
 
     const getTopicVideoDetail = async () => {

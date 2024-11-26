@@ -7,11 +7,11 @@ import Loader from "../../../../components/custom ui/Loader";
 
 const StoryDetail = ({ params }: { params: { storyId: string } }) => {
     const [story, setStory] = useState<StoryType | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [ setLoading] = useState(true);
 
     useEffect(() => {
         getStory();
-    }, []);
+    }, [getStory]);
     console.log(story);
 
     const getStory = async () => {

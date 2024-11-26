@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const News = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
     const [news, setNews] = useState([]);
 
     const getNews = async () => {

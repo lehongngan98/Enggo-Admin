@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 const Communication = () => {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
     const [communication, setcommunication] = useState([]);
 
     const getcommunication = async () => {
