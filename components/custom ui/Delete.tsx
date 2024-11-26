@@ -52,20 +52,21 @@ const Delete: React.FC<DeleteProps> = ({ id,item }) => {
             <AlertDialogContent className="bg-white text-grey-1">
                 <AlertDialogHeader>
                     <AlertDialogTitle className="text-red-1">
-                        Are you absolutely sure?
+                        Bạn có chắc chắn muốn xóa {item} này?
                     </AlertDialogTitle>
                     <AlertDialogDescription>
-                        This action cannot be undone. This will permanently
-                        delete your collection.
+                        Hành động này không thể hoàn tác
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel>
+                        Huỷ
+                    </AlertDialogCancel>
                     <AlertDialogAction
                         className="bg-red-1 text-white"
                         onClick={onDelete}
                     >
-                        Continue
+                        Tiếp tục
                     </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>

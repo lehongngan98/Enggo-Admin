@@ -166,3 +166,12 @@ type ChannelType = {
   description: string
   channelId: string
 }
+
+// User types
+type UserType = {
+  _id: string
+  fullname: string
+  email: string  
+  photoURL: string
+  role: string
+}
