@@ -15,12 +15,15 @@ export const POST = async (req: NextRequest) => {
         await connectToDB();
 
         const { nameEn, nameVn, image, content, words } = await req.json();
+        
 
         if (!nameEn || !nameVn || !image || !content) {
             return new NextResponse("All fields are required", { status: 400 });
         }
 
         const existingStory = await Story.findOne({ nameEn });
+        console.log("Existing story:", existingStory); // Debugging log
+        
 
         if (existingStory) {
             return new NextResponse("Story already exists", { status: 400 });
@@ -50,7 +53,7 @@ export const GET = async (req: NextRequest) => {
 
         const stories = await Story.find()
             .sort({ createdAt: "desc" })
-            .populate("words"); // If words are references, populate them
+            // .populate("words"); // If words are references, populate them
 
         console.log("Fetched stories:", stories); // Debugging log
 

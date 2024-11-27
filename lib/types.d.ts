@@ -139,10 +139,10 @@ export interface QuoteWord {
 
 // communication types
 type CommunicationType = {
-  _id: string
-  image: string
+  _id: string  
   titleEn: string
   titleVn: string
+  image: string
   vocab: Vocab[]
 }
 

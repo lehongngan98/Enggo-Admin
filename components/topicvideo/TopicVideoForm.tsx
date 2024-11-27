@@ -84,6 +84,14 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                 body: JSON.stringify(values),
             });
 
+            console.log(res.body);
+            
+            if(res.status === 400){
+                setIsLoading(false);
+                toast.error("Chủ đề video đã tồn tại!");
+                return
+            }
+
             if (res.ok) {
                 setIsLoading(false);
                 toast.success(
@@ -187,6 +195,15 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                             <div key={index} className="flex items-start gap-4 flex-col border rounded-md p-4 w-50">
                                 <p>{index+1}</p>
                                 <FormControl>
+                                    <ImageUpload
+                                        value={item.image ? [item.image] : []}
+                                        onChange={(url) =>
+                                            form.setValue(`Items.${index}.image`, url)
+                                        }
+                                        onRemove={() => form.setValue(`Items.${index}.image`, "")}
+                                    />
+                                </FormControl>
+                                <FormControl>
                                     <Input
                                         placeholder="Tiêu đề"
                                         value={item.title}
@@ -204,15 +221,7 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                                         }
                                     />
                                 </FormControl>
-                                <FormControl>
-                                    <ImageUpload
-                                        value={item.image ? [item.image] : []}
-                                        onChange={(url) =>
-                                            form.setValue(`Items.${index}.image`, url)
-                                        }
-                                        onRemove={() => form.setValue(`Items.${index}.image`, "")}
-                                    />
-                                </FormControl>
+                                
                                 <Button
                                     type="button"
                                     onClick={() => removeWordField(index)}

@@ -17,11 +17,11 @@ import {
   } from "lucide-react";
   
   export const navLinks = [
-    {
-      url: "/",
-      icon: <LayoutDashboard />,
-      label: "Dashboard",
-    },
+    // {
+    //   url: "/",
+    //   icon: <LayoutDashboard />,
+    //   label: "Dashboard",
+    // },
     {
       url: "/user",
       icon: <UsersRound />,

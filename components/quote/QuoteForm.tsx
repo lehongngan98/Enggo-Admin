@@ -86,6 +86,12 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
                 body: JSON.stringify(values),
             });
 
+            if(res.status === 400){
+                setIsLoading(false);
+                toast.error("Nội dung đã tồn tại!");
+                return;
+            }
+
             if (res.ok) {
                 setIsLoading(false);
                 toast.success(

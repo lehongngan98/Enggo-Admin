@@ -15,24 +15,29 @@ export const POST = async (req: NextRequest) => {
 
         await connectToDB();
 
-        const { image, titleEn, titleVn, vocab } = await req.json();
+        const {  titleEn, titleVn,image, vocab } = await req.json();
+        console.log(image, titleEn, titleVn, vocab);
 
         if (!image || !titleEn || !titleVn || !vocab || !Array.isArray(vocab)) {
             return new NextResponse("All fields are required, and vocab must be an array", { status: 400 });
         }
 
+    
+        
+
         // Kiểm tra xem chủ đề từ vựng đã tồn tại chưa
         const existingCommunication = await Communication.findOne({ titleEn });
 
         if (existingCommunication) {
-            return new NextResponse("communication topic already exists", { status: 400 });
+            return new NextResponse("Communication topic already exists", { status: 400 });
         }
 
         // Tạo chủ đề từ vựng mới
         const newCommunication = await Communication.create({
-            image,
+            
             titleEn,
             titleVn,
+            image,
             vocab,
         });
 

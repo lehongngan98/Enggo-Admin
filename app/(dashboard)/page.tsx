@@ -1,9 +1,14 @@
-import { UserButton } from "@clerk/nextjs";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div>
-      <UserButton />
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/user");
+  }, [router]);
+
+  return null;
 }

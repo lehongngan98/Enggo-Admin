@@ -21,6 +21,7 @@ import Delete from "../custom ui/Delete";
 import ImageUpload from "../custom ui/ImageUpload";
 import { Separator } from "../ui/separator";
 import { Textarea } from "../ui/textarea";
+import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
     title: z.string().min(2).max(20),
@@ -74,6 +75,13 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
                 body: JSON.stringify(values),
             });
 
+            if(res.status === 400){
+                setIsLoading(false);
+                toast.error("Tin tức đã tồn tại!");
+                return;
+            }
+
+
             if (res.ok) {
                 setIsLoading(false);
                 toast.success(
@@ -89,7 +97,8 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
         }
     };
 
-    return (
+    return isLoading ? <Loader /> :
+    (
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">

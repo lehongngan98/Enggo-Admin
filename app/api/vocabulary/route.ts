@@ -22,6 +22,8 @@ export const POST = async (req: NextRequest) => {
 
         // Kiểm tra xem chủ đề từ vựng đã tồn tại chưa
         const existingVocabulary = await Vocabulary.findOne({ titleEn });
+        console.log("existingVocabulary :",existingVocabulary);
+        
 
         if (existingVocabulary) {
             return new NextResponse("Vocabulary topic already exists", { status: 400 });

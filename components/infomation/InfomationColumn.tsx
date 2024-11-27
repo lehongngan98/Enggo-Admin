@@ -24,7 +24,11 @@ export const columns: ColumnDef<InformationType>[] = [
 	{
 		accessorKey: "news",
 		header: "Loại Tin Tức",
-		cell: ({ row }) => <div className="hover:text-red-500 hover:italic">{row.original.news.title}</div>,
+		cell: ({ row }) => (
+			<div className="hover:text-red-500 hover:italic">
+				{row.original.news ? row.original.news.title : "No News"}
+			</div>
+		),
 	},
 	{
 		id: "actions",

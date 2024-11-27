@@ -79,6 +79,12 @@ const ChannelForm: React.FC<ChannelFormProps> = ({ initialData }) => {
                 body: JSON.stringify(values),
             });
 
+            if(res.status === 400){
+                setIsLoading(false);
+                toast.error("Chủ đề đã tồn tại!");
+                return;
+            }
+
             if (res.ok) {
                 setIsLoading(false);
                 toast.success(

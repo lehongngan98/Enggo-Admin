@@ -24,8 +24,8 @@ import { Separator } from "../ui/separator";
 import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
-    titleEn: z.string().min(2).max(20),
-    titleVn: z.string().min(2).max(20),
+    titleEn: z.string(),
+    titleVn: z.string(),
     image: z.string(),
     vocab: z.array(
         z.object({
@@ -85,6 +85,14 @@ const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
                 },
                 body: JSON.stringify(values),
             });
+            console.log("res :",res.body);
+            
+
+            if(res.status === 400){
+                setIsLoading(false);
+                toast.error("Chủ đề đã tồn tại!");
+                return;
+            }
 
             if (res.ok) {
                 setIsLoading(false);

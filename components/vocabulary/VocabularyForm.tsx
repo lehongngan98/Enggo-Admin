@@ -23,8 +23,8 @@ import { Separator } from "../ui/separator";
 import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
-    titleEn: z.string().min(2).max(20),
-    titleVn: z.string().min(2).max(20),
+    titleEn: z.string().min(2).max(200),
+    titleVn: z.string().min(2).max(200),
     image: z.string(),
     vocab: z.array(
         z.object({
@@ -84,6 +84,12 @@ const VocabularyForm: React.FC<VocabularyProps> = ({ initialData }) => {
                 },
                 body: JSON.stringify(values),
             });
+
+            if(res.status === 400){
+                setIsLoading(false);
+                toast.error("Chủ đề từ vựng đã tồn tại!");
+                return
+            }
 
             if (res.ok) {
                 setIsLoading(false);

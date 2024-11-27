@@ -11,9 +11,10 @@ const vocabSchema = new Schema({
 // Định nghĩa schema chính cho Vocabulary
 const communicationSchema = new Schema(
   {
-    image: { type: String, required: true }, // Hình ảnh cho chủ đề từ vựng
+    
     titleEn: { type: String, required: true, trim: true, unique: true }, // Tiêu đề tiếng Anh
     titleVn: { type: String, required: true, trim: true }, // Tiêu đề tiếng Việt
+    image: { type: String, required: true }, // Hình ảnh cho chủ đề từ vựng
     vocab: [vocabSchema], // Danh sách từ vựng (sử dụng sub-schema `vocabSchema`)
     createdAt: { type: Date, default: Date.now }, // Ngày tạo
     updatedAt: { type: Date, default: Date.now }, // Ngày cập nhật

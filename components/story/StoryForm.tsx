@@ -88,6 +88,12 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                 body: JSON.stringify(values),
             });
 
+            if(res.status === 400){
+                setIsLoading(false);
+                toast.error("Truyện đã tồn tại!");
+                return;
+            }
+
             if (res.ok) {
                 setIsLoading(false);
                 toast.success(

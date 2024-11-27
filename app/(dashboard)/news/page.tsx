@@ -19,6 +19,7 @@ const News = () => {
             const res = await fetch("/api/news", {
                 method: "GET",
             });
+            
             if (!res.ok) {
                 throw new Error("Failed to fetch news");
             }
