@@ -19,8 +19,8 @@ export const columns: ColumnDef<UserType>[] = [
 	},
 	{
 		accessorKey: "photoURL",
-		cell: ({ row }) => <Image src={row.original.photoURL} alt={row.original.fullname} width={40} height={40} className="rounded-full" />,
-		// cell: ({ row }) => <img src={row.original.photoURL} alt={row.original.fullname} className="w-10 h-10 rounded-full" />,
+		// cell: ({ row }) => <Image src={row.original.photoURL} alt={row.original.fullname} width={40} height={40} className="rounded-full" />,
+		cell: ({ row }) => <img src={row.original.photoURL} alt={row.original.fullname} className="w-10 h-10 rounded-full" />,
 	},
 	{
 		accessorKey: "role",
