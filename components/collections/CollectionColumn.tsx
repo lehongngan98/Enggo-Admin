@@ -1,8 +1,9 @@
 "use client"
  
+import { CollectionType } from "@/lib/types"
 import { ColumnDef } from "@tanstack/react-table"
-import Delete from "../custom ui/Delete"
 import Link from "next/link"
+import Delete from "../custom ui/Delete"
 
 
 export const columns: ColumnDef<CollectionType>[] = [

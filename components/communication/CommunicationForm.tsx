@@ -21,6 +21,7 @@ import { z } from "zod";
 import Delete from "../custom ui/Delete";
 import ImageUpload from "../custom ui/ImageUpload";
 import { Separator } from "../ui/separator";
+import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
     titleEn: z.string().min(2).max(20),
@@ -41,7 +42,7 @@ interface CommunicationProps {
 
 const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setIsLoading] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -115,7 +116,8 @@ const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
     };
 
 
-    return (
+    return loading ? <Loader/> :
+    (
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">

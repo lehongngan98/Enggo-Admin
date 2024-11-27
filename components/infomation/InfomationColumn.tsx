@@ -1,6 +1,7 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
+import Image from "next/image"
 import Delete from "../custom ui/Delete"
 import Link from "next/link"
 import { InformationType } from "@/lib/types"
@@ -18,8 +19,7 @@ export const columns: ColumnDef<InformationType>[] = [
 	},
 	{
 		accessorKey: "image",
-		header: "Hình Ảnh",
-		cell: ({ row }) => <img src={row.original.image} alt={row.original.subTitle} className="h-10 w-10 object-cover" />,
+		cell: ({ row }) => <Image src={row.original.image} alt={row.original.subTitle} width={40} height={40} className="object-cover" />,		
 	},
 	{
 		accessorKey: "news",

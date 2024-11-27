@@ -1,27 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
-import { Separator } from "../ui/separator";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
+    FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "../ui/textarea";
-import ImageUpload from "../custom ui/ImageUpload";
+import { StoryType } from "@/lib/types";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { z } from "zod";
 import Delete from "../custom ui/Delete";
-import { CollectionType, StoryType } from "@/lib/types";
+import ImageUpload from "../custom ui/ImageUpload";
+import { Separator } from "../ui/separator";
+import { Textarea } from "../ui/textarea";
+import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
     nameEn: z.string().min(2).max(20),
@@ -118,7 +118,8 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
     };
 
 
-    return (
+    return isLoading ? <Loader/> :
+    (
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">

@@ -17,26 +17,27 @@ const Channel = () => {
     const [loading, setLoading] = useState(true);
     const [channel, setChannel] = useState([]);
 
-    const getChannel = async () => {
-        try {
-            const res = await fetch("/api/channel", {
-                method: "GET",
-            });
-            if (!res.ok) {
-                throw new Error("Failed to fetch channel");
-            }
-            const data = await res.json();
-            setChannel(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("[channel_GET]", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
     useEffect(() => {
+        const getChannel = async () => {
+            try {
+                const res = await fetch("/api/channel", {
+                    method: "GET",
+                });
+                if (!res.ok) {
+                    throw new Error("Failed to fetch channel");
+                }
+                const data = await res.json();
+                setChannel(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("[channel_GET]", error);
+            } finally {
+                setLoading(false);
+            }
+        };
         getChannel();
-    }, []);
+    },[]);
 
     console.log(channel);
 

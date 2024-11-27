@@ -4,14 +4,13 @@ import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
+    FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { QuoteType, TopicVideoType, VocabularyType } from "@/lib/types";
+import { QuoteType } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -19,10 +18,9 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 import Delete from "../custom ui/Delete";
-import ImageUpload from "../custom ui/ImageUpload";
 import { Separator } from "../ui/separator";
-import { Text } from "lucide-react";
 import { Textarea } from "../ui/textarea";
+import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
 
@@ -118,7 +116,8 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
     };
 
 
-    return (
+    return isLoading ? <Loader /> :
+    (
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">

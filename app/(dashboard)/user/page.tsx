@@ -2,14 +2,12 @@
 
 
 import { DataTable } from "@/components/custom ui/DataTable";
-import { columns } from "@/components/user/UserColumn";
 import Loader from '@/components/custom ui/Loader';
 import { Separator } from "@/components/ui/separator";
-import { useRouter } from "next/navigation";
+import { columns } from "@/components/user/UserColumn";
 import { useEffect, useState } from "react";
 
-const User = () => {
-    const router = useRouter();
+const User = () => {    
     const [loading,setLoading] = useState(true);
     const [user, setuser] = useState([]);
 
@@ -32,7 +30,7 @@ const User = () => {
     };
     useEffect(() => {
         getuser();
-    }, []);
+    },[]);
 
     console.log(user);
 

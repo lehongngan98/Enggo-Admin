@@ -10,27 +10,27 @@ const ChannelDetail = ({ params }: { params: { channelId: string } }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getChannelDetail();
-    }, []);
-    console.log(channel);
-
-    const getChannelDetail = async () => {
-        try {
-            const res = await fetch(`/api/channel/${params.channelId}`, {
-                method: "GET",
-            });
-            if (!res.ok) {
-                throw new Error("Failed to fetch channel");
+        const getChannelDetail = async () => {
+            try {
+                const res = await fetch(`/api/channel/${params.channelId}`, {
+                    method: "GET",
+                });
+                if (!res.ok) {
+                    throw new Error("Failed to fetch channel");
+                }
+                const data = await res.json();
+                setChannel(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("[channel_GET]", error);
+            } finally {
+                setLoading(false);
             }
-            const data = await res.json();
-            setChannel(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("[channel_GET]", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+        };
+        getChannelDetail();
+    },[params.channelId]);    
+
+    
     return loading ? <Loader /> : (
       <ChannelForm  initialData={channel}/>
     )

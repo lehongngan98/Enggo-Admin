@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { InformationType } from '@/lib/types';
 import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 const  Infomation = () => {
   const router = useRouter();
@@ -16,23 +16,24 @@ const  Infomation = () => {
   const [infomation, setInfomation] = useState<InformationType[]>([]);
 
   useEffect(() => {
+    const getInfomation = async () => {
+      try {
+        const res = await fetch("/api/infomation",{
+          method: "GET",       
+        });
+  
+        const data = await res.json();
+        setInfomation(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("infomation_GET",error);
+  
+      }
+    };
     getInfomation();
-  }, []);
+  },[]);
 
-  const getInfomation = async () => {
-    try {
-      const res = await fetch("/api/infomation",{
-        method: "GET",       
-      });
-
-      const data = await res.json();
-      setInfomation(data);
-      setLoading(false);
-    } catch (error) {
-      console.error("infomation_GET",error);
-
-    }
-  };
+  
   return loading ? <Loader /> : (
     <div className="px-10 py-5">
             <div className="flex items-center justify-between ">

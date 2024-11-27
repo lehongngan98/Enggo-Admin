@@ -1,6 +1,6 @@
 "use client";
-import Loader from '@/components/custom ui/Loader';
 import { DataTable } from "@/components/custom ui/DataTable";
+import Loader from '@/components/custom ui/Loader';
 import { columns } from "@/components/topicvideo/TopicVideoColumn";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -32,7 +32,7 @@ const TopicVideo = () => {
     };
     useEffect(() => {
         getTopicVideo();
-    }, []);
+    },[]);
 
     console.log(TopicVideo);
 

@@ -1,11 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useRouter } from "next/navigation";
 
-import { Separator } from "../ui/separator";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -21,26 +20,24 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
+import { Separator } from "../ui/separator";
 
 import { Input } from "@/components/ui/input";
-import { Textarea } from "../ui/textarea";
-import ImageUpload from "../custom ui/ImageUpload";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Delete from "../custom ui/Delete";
+import ImageUpload from "../custom ui/ImageUpload";
+import { Textarea } from "../ui/textarea";
 
 
-import Loader from "../custom ui/Loader";
-import MultiText from "../custom ui/MultiText";
-import MultiSelect from "../custom ui/MultiSelect";
-import { Value } from "@radix-ui/react-select";
 import { InformationType, NewsType } from "@/lib/types";
+import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
   subTitle: z.string().min(2).max(20),
   image: z.string(),
-  text: z.string().min(2).max(500).trim(),
+  text: z.string().min(2).max(1000),
   news: z.string(),
 });
 
@@ -196,8 +193,7 @@ const InfomationForm: React.FC<InfomationFormProps> = ({ initialData }) => {
                     onKeyDown={handleKeyPress}
                   />
                 </FormControl>
-                <FormMessage className="text-red-1">
-                  {form.formState.touchedFields.text && form.formState.errors.text?.message}
+                <FormMessage className="text-red-1">                  
                 </FormMessage>
               </FormItem>
             )}

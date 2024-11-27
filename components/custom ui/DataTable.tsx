@@ -2,9 +2,9 @@
 
 import {
     ColumnDef,
+    ColumnFiltersState,
     flexRender,
     getCoreRowModel,
-    ColumnFiltersState,
     getFilteredRowModel,
     useReactTable,
 } from "@tanstack/react-table";
@@ -17,8 +17,8 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import { Input } from "../ui/input";
 import React from "react";
+import { Input } from "../ui/input";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];

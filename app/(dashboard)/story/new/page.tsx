@@ -1,5 +1,4 @@
 import StoryForm from '@/components/story/StoryForm'
-import React from 'react'
 
 const page = () => {
     return (

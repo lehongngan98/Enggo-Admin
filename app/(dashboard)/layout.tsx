@@ -1,12 +1,12 @@
+import LeftSideBar from '@/components/layout/LeftSideBar';
+import TopBar from '@/components/layout/TopBar';
+import { ToastProvider } from '@/lib/ToastProvider';
 import {
   ClerkProvider
 } from '@clerk/nextjs';
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../globals.css";
-import LeftSideBar from '@/components/layout/LeftSideBar';
-import TopBar from '@/components/layout/TopBar';
-import { ToastProvider } from '@/lib/ToastProvider';
 
 
 const geistSans = localFont({

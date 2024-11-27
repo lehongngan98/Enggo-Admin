@@ -1,9 +1,9 @@
 "use client"
 
+import { QuoteType } from "@/lib/types"
 import { ColumnDef } from "@tanstack/react-table"
-import Delete from "../custom ui/Delete"
 import Link from "next/link"
-import { QuoteType, StoryType, TopicVideoType, VocabularyType } from "@/lib/types"
+import Delete from "../custom ui/Delete"
 
 
 export const columns: ColumnDef<QuoteType>[] = [

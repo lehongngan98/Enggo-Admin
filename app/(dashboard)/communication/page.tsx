@@ -33,7 +33,7 @@ const Communication = () => {
     };
     useEffect(() => {
         getcommunication();
-    }, []);
+    });
 
     console.log(communication);
 

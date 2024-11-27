@@ -10,27 +10,28 @@ const TopicVideoDetail = ({ params }: { params: { topicvideoId: string } }) => {
     const [loading,setLoading] = useState(true);
 
     useEffect(() => {
+        const getTopicVideoDetail = async () => {
+            try {
+                const res = await fetch(`/api/topicvideo/${params.topicvideoId}`, {
+                    method: "GET",
+                });
+                if (!res.ok) {
+                    throw new Error("Failed to fetch topicvideo");
+                }
+                const data = await res.json();
+                setTopicVideo(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("[topicvideo_GET]", error);
+            } finally {
+                setLoading(false);
+            }
+        };
         getTopicVideoDetail();
-    }, []);
+    },[params.topicvideoId]);
     console.log(topicVideo);
 
-    const getTopicVideoDetail = async () => {
-        try {
-            const res = await fetch(`/api/topicvideo/${params.topicvideoId}`, {
-                method: "GET",
-            });
-            if (!res.ok) {
-                throw new Error("Failed to fetch topicvideo");
-            }
-            const data = await res.json();
-            setTopicVideo(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("[topicvideo_GET]", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
     return loading ? <Loader /> : (
       <TopicVideoForm  initialData={topicVideo}/>
     )

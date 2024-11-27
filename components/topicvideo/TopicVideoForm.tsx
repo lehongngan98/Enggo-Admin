@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
+    FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { TopicVideoType } from "@/lib/types";
@@ -21,6 +20,7 @@ import { z } from "zod";
 import Delete from "../custom ui/Delete";
 import ImageUpload from "../custom ui/ImageUpload";
 import { Separator } from "../ui/separator";
+import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
     title: z.string().min(2).max(20),    
@@ -114,7 +114,8 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
     };
 
 
-    return (
+    return isLoading ? <Loader/> :
+    (
         <div className="p-10">
             {initialData ? (
                 <div className="flex items-center justify-between">

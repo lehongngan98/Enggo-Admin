@@ -1,4 +1,3 @@
-import React from "react";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -10,10 +9,10 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "../ui/button";
 import { Trash } from "lucide-react";
+import React from "react";
 import toast from "react-hot-toast";
-import { set } from "mongoose";
+import { Button } from "../ui/button";
 
 interface DeleteProps {
     id: string;

@@ -1,9 +1,10 @@
 "use client"
 
+import { VocabularyType } from "@/lib/types"
 import { ColumnDef } from "@tanstack/react-table"
-import Delete from "../custom ui/Delete"
+import Image from "next/image"
 import Link from "next/link"
-import { StoryType, TopicVideoType, VocabularyType } from "@/lib/types"
+import Delete from "../custom ui/Delete"
 
 
 export const columns: ColumnDef<VocabularyType>[] = [
@@ -19,8 +20,8 @@ export const columns: ColumnDef<VocabularyType>[] = [
 	},
 	{
 		accessorKey: "background",
-		header: "Hình ảnh chủ đề",
-		cell: ({ row }) => <img src={row.original.image} alt="image" className="w-20 h-20" />,
+		cell: ({ row }) => <Image src={row.original.image} alt="image" width={80} height={80} className="w-20 h-20" />,
+		// cell: ({ row }) => <img src={row.original.image} alt="image" className="w-20 h-20" />,
 	},
 	{
 		accessorKey: "vocab",

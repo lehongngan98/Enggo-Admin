@@ -33,7 +33,7 @@ const Story = () => {
     };
     useEffect(() => {
         getStory();
-    }, []);
+    },[]);
 
     console.log(story);
 

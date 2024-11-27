@@ -1,13 +1,13 @@
 "use client";
 
 import { DataTable } from "@/components/custom ui/DataTable";
-import { columns } from "@/components/vocabulary/VocabularyColumn";
+import Loader from '@/components/custom ui/Loader';
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { columns } from "@/components/vocabulary/VocabularyColumn";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Loader from '@/components/custom ui/Loader';
 
 const Vocabulary = () => {
     const router = useRouter();
@@ -33,7 +33,7 @@ const Vocabulary = () => {
     };
     useEffect(() => {
         getVocabulary();
-    }, []);
+    },[]);
 
     console.log(Vocabulary);
 

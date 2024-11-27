@@ -27,8 +27,8 @@ type ProductType = {
 type NewsType = {
   _id: string;
   title: string;
-  content: string;
   image: string;
+  content: string;
   information: InformationType[];
   createdAt: Date;
   updatedAt: Date;
@@ -36,9 +36,9 @@ type NewsType = {
 
 type InformationType = {
   _id: string;
-  subTitle: string;
-  text: string;
+  subTitle: string;  
   image: string;
+  text: string;
   news: NewsType;
   createdAt: Date;
   updatedAt: Date;

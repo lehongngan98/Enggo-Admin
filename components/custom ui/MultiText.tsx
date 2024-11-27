@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 
-import { Input } from "../ui/input";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
 import { X } from "lucide-react";
+import { Badge } from "../ui/badge";
+import { Input } from "../ui/input";
 
 interface MultiTextProps {
   placeholder: string;

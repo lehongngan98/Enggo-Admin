@@ -10,27 +10,28 @@ const StoryDetail = ({ params }: { params: { storyId: string } }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const getStory = async () => {
+            try {
+                const res = await fetch(`/api/story/${params.storyId}`, {
+                    method: "GET",
+                });
+                if (!res.ok) {
+                    throw new Error("Failed to fetch story");
+                }
+                const data = await res.json();
+                setStory(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("[story_GET]", error);
+            } finally {
+                setLoading(false);
+            }
+        };
         getStory();
-    }, []);
+    },[params.storyId]);
     console.log(story);
 
-    const getStory = async () => {
-        try {
-            const res = await fetch(`/api/story/${params.storyId}`, {
-                method: "GET",
-            });
-            if (!res.ok) {
-                throw new Error("Failed to fetch story");
-            }
-            const data = await res.json();
-            setStory(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("[story_GET]", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
     return loading ? <Loader /> : (
       <StoryForm  initialData={story}/>
     )

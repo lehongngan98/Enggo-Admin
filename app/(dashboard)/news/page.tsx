@@ -1,6 +1,7 @@
 "use client";
-import Loader from '@/components/custom ui/Loader';
+
 import { DataTable } from "@/components/custom ui/DataTable";
+import Loader from "@/components/custom ui/Loader";
 import { columns } from "@/components/news/NewsColumn";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -32,7 +33,7 @@ const News = () => {
     };
     useEffect(() => {
         getNews();
-    }, []);
+    },[]);
 
     console.log(news);
 

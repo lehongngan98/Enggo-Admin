@@ -15,26 +15,28 @@ const BilingualTopic = () => {
     const [loading, setLoading] = useState(true);
     const [bilingualtopic, setBilingualTopic] = useState([]);
 
-    const getBilingualTopic = async () => {
-        try {
-            const res = await fetch("/api/bilingualtopic", {
-                method: "GET",
-            });
-            if (!res.ok) {
-                throw new Error("Failed to fetch bilingualtopic");
-            }
-            const data = await res.json();
-            setBilingualTopic(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("[bilingualtopic_GET]", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
     useEffect(() => {
+        const getBilingualTopic = async () => {
+            try {
+                const res = await fetch("/api/bilingualtopic", {
+                    method: "GET",
+                });
+                if (!res.ok) {
+                    throw new Error("Failed to fetch bilingualtopic");
+                }
+                const data = await res.json();
+                setBilingualTopic(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("[bilingualtopic_GET]", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        
         getBilingualTopic();
-    }, []);
+    },[]);
 
     console.log(bilingualtopic);
 

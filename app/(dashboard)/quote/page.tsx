@@ -1,6 +1,6 @@
 "use client";
-import Loader from '@/components/custom ui/Loader';
 import { DataTable } from "@/components/custom ui/DataTable";
+import Loader from '@/components/custom ui/Loader';
 import { columns } from "@/components/quote/QuoteColumn";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -32,7 +32,7 @@ const Quote = () => {
     };
     useEffect(() => {
         getQuote();
-    }, []);
+    },[]);
 
     console.log(Quote);
 

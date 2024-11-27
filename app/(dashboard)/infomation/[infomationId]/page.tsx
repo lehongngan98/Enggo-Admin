@@ -10,11 +10,7 @@ const InfomationDetail = ({params}: {params : { infomationId: string} }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      getInfomationDetail();
-    }, []);
-    console.log(InfomationDetail);
-
-    const getInfomationDetail = async () => {
+      const getInfomationDetail = async () => {
         try {
             const res = await fetch(`/api/infomation/${params.infomationId}`, {
                 method: "GET",
@@ -31,6 +27,11 @@ const InfomationDetail = ({params}: {params : { infomationId: string} }) => {
             setLoading(false);
         }
     };
+      getInfomationDetail();
+    },[params.infomationId]);
+    console.log(InfomationDetail);
+
+    
   return  loading ? <Loader /> : (
     <InfomationForm initialData={InfomationDetail}/>
   )

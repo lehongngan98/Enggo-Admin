@@ -4,9 +4,10 @@ import Loader from '@/components/custom ui/Loader';
 import { columns } from '@/components/products/ProductColumn';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { ProductType } from '@/lib/types';
 import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 const  Products = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const  Products = () => {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  },[]);
 
   const getProducts = async () => {
     try {

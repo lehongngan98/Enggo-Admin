@@ -1,17 +1,12 @@
-import React, { useState } from "react";
 import {
     Command,
-    CommandDialog,
-    CommandEmpty,
     CommandGroup,
     CommandInput,
-    CommandItem,
-    CommandList,
-    CommandSeparator,
-    CommandShortcut,
+    CommandItem
 } from "@/components/ui/command";
-import { Badge, X } from "lucide-react";
-import { Button } from "../ui/button";
+import { CollectionType } from "@/lib/types";
+import { X } from "lucide-react";
+import React, { useState } from "react";
 
 interface MultiSelectProps {
     placeholder: string;

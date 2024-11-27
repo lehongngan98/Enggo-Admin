@@ -1,9 +1,10 @@
 "use client"
 
+import { TopicVideoType } from "@/lib/types"
 import { ColumnDef } from "@tanstack/react-table"
-import Delete from "../custom ui/Delete"
+import Image from "next/image"
 import Link from "next/link"
-import { StoryType, TopicVideoType } from "@/lib/types"
+import Delete from "../custom ui/Delete"
 
 
 export const columns: ColumnDef<TopicVideoType>[] = [
@@ -14,8 +15,8 @@ export const columns: ColumnDef<TopicVideoType>[] = [
 	},
 	{
 		accessorKey: "background",
-		header: "Hình ảnh",
-		cell: ({ row }) => <img src={row.original.background} alt="image" className="w-20 h-20" />,
+		cell: ({ row }) => <Image src={row.original.background} alt="image" width={80} height={80} className="w-20 h-20" />,
+		// cell: ({ row }) => <img src={row.original.background} alt="image" className="w-20 h-20" />,
 	},
 	{
 		accessorKey: "Items",

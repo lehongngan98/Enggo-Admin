@@ -6,36 +6,38 @@ import { Separator } from "@/components/ui/separator";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loader from '@/components/custom ui/Loader';
 
 const Collections = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [collections, setCollections] = useState([]);
 
-    const getCollections = async () => {
-        try {
-            const res = await fetch("/api/collections", {
-                method: "GET",
-            });
-            if (!res.ok) {
-                throw new Error("Failed to fetch collections");
-            }
-            const data = await res.json();
-            setCollections(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("[collections_GET]", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
     useEffect(() => {
+        const getCollections = async () => {
+            try {
+                const res = await fetch("/api/collections", {
+                    method: "GET",
+                });
+                if (!res.ok) {
+                    throw new Error("Failed to fetch collections");
+                }
+                const data = await res.json();
+                setCollections(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("[collections_GET]", error);
+            } finally {
+                setLoading(false);
+            }
+        };
         getCollections();
-    }, []);
+    },[]);
 
     console.log(collections);
 
-    return  loading ? <Loader /> :
+    return  loading ? <Loader/> :
     (
         <div className="px-10 py-5">
             <div className="flex items-center justify-between ">
