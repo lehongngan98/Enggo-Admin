@@ -1,10 +1,14 @@
-import Exercises from "@/lib/models/Exercises";
+
+
+import Exercise from "@/lib/models/Exercises";
 import { connectToDB } from "@/lib/mongoDB";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
 
 export const POST = async (req: NextRequest) => {
+    console.log("create exercises");
+    
     try {
         const { userId } = auth();
 
@@ -15,18 +19,20 @@ export const POST = async (req: NextRequest) => {
         await connectToDB();
 
         const {title,background,Items } = await req.json();
+        console.log("exercises create:",title,background,Items);
+        
 
-        const existingCollection = await Exercises.findOne({title})
+        const existingExercises = await Exercise.findOne({title})
 
-        if(existingCollection){
+        if(existingExercises){
             return new NextResponse("Exercises already exists", { status: 400 });
         }
 
-        if(!title || !background){
-            return new NextResponse("Bad required", { status: 400 });
+        if(!title || !background ||  !Array.isArray(Items)){
+            return new NextResponse("Bad required", { status: 401 });
         }
 
-        const newExercises = await Exercises.create({
+        const newExercises = await Exercise.create({
             title,
             background,
             Items,        
@@ -36,7 +42,7 @@ export const POST = async (req: NextRequest) => {
 
         console.log("New Exercises created:", newExercises); // Add this for debugging
         
-        return new NextResponse(newExercises, { status: 201 });
+        return new NextResponse(newExercises, { status: 200 });
         
     } catch (error) {
         console.log("[newExercises_POST] :", error);
@@ -48,7 +54,7 @@ export const GET = async (req: NextRequest) => {
     try {
         await connectToDB();
 
-        const exercises = await Exercises.find().sort({ createdAt: "desc" });
+        const exercises = await Exercise.find().sort({ createdAt: "desc" });
 
         console.log("Fetched exercises:", exercises); // Add this for debugging
 

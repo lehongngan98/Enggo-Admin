@@ -1,70 +1,65 @@
-import mongoose, { Schema, Document, model, models } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
-// Define interfaces
-export interface Content {
-  text: string;
-  _id: string;
-}
-
-export interface ChoosePhrase {
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  _id: string;
-}
-
-export interface Item {
+// Define the Exercise interface
+interface Exercise extends Document {
   title: string;
-  link: string;
-  image: string;
-  content: Content[];
-  choosePhrase: ChoosePhrase[];
-  _id: string;
-}
-
-export interface IExercise extends Document {
-  title: string;
-  background: string;
-  Items: Item[];
+  background?: string;
+  Items?: {
+    title: string;
+    link: string;
+    image: string;
+    content: { text: string }[];
+    choosePhrase: {
+      question: string;
+      options: string[];
+      correctAnswer: string;
+    }[];
+  }[];
   createdAt: Date;
   updatedAt: Date;
 }
 
-// Define schema
-const contentSchema = new Schema<Content>({
-  text: { type: String, required: true },
-});
-
-const choosePhraseSchema = new Schema<ChoosePhrase>({
-  question: { type: String, required: true },
-  options: { type: [String], required: true },
-  correctAnswer: { type: String, required: true },
-
-});
-
-const itemSchema = new Schema<Item>({
-  title: { type: String, required: true },
-  link: { type: String, required: true },
-  image: { type: String, required: true },
-  content: { type: [contentSchema], required: true },
-  choosePhrase: { type: [choosePhraseSchema], required: true },
-
-});
-
-const exercisesSchema = new Schema<IExercise>(
+// Define the Exercise Schema
+const ExerciseSchema = new Schema<Exercise>(
   {
-    title: { type: String, required: true, unique: true },
-    background: { type: String, required: true },
-    Items: { type: [itemSchema], required: true },
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now },
+    title: { type: String, required: true },
+    background: { type: String, required: false },
+    Items: [
+      {
+        title: { type: String, required: true },
+        link: { type: String, required: true },
+        image: { type: String, required: true },
+        content: [
+          {
+            text: { type: String, required: true },
+          },
+        ],
+        choosePhrase: [
+          {
+            question: { type: String, required: true },
+            options: [{ type: String, required: true }],
+            correctAnswer: { type: String, required: true },
+          },
+        ],
+      },
+    ],
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
-    timestamps: true, // Automatically manage createdAt and updatedAt
+    timestamps: true, // Tự động thêm `createdAt` và `updatedAt`
   }
 );
 
-// Export model
-const Exercises = models.Exercises || model<IExercise>('Exercises', exercisesSchema);
+// Avoid re-compiling model during hot-reloading in development
+const Exercise =
+  mongoose.models.Exercise ||
+  mongoose.model<Exercise>("Exercise", ExerciseSchema);
 
-export default Exercises;
+export default Exercise;

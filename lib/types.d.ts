@@ -46,14 +46,14 @@ type InformationType = {
 
 
 // Exercise types
-export interface ExerciseType {
+type ExerciseType ={
   _id: string
   title: string
   background: string
   Items: Item[]
 }
 
-export interface Item {
+type Item ={
   title: string
   link: string
   image: string
@@ -62,12 +62,12 @@ export interface Item {
   _id: string
 }
 
-export interface Content {
+type Content ={
   text: string
   _id: string
 }
 
-export interface ChoosePhrase {
+type ChoosePhrase ={
   question: string
   options: string[]
   correctAnswer: string

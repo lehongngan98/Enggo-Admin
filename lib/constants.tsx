@@ -41,7 +41,7 @@ import {
     {
       url: "/exercises",
       icon: <LayoutList/>,
-      label: "Bài Tập (fix)",
+      label: "Bài Tập",
     },
     {
       url: "/story",
