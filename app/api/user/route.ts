@@ -14,7 +14,13 @@ export const GET = async (req: NextRequest) => {
 
     console.log("user :", user);
 
-    return NextResponse.json(user, { status: 200 });
+    // return NextResponse.json(user, { status: 200 });
+    return new NextResponse(JSON.stringify(user), {
+      status: 200,
+      headers: {
+        "Cache-Control": "no-store", // Ngăn cache
+      },
+    });
   } catch (error) {
     console.log("[user_GET] :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
