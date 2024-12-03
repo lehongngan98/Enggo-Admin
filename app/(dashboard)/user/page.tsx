@@ -11,24 +11,27 @@ const User = () => {
     const [loading,setLoading] = useState(true);
     const [user, setuser] = useState([]);
 
-    const getuser = async () => {
-        try {
-            const res = await fetch("/api/user", {
-                method: "GET",
-            });
-            if (!res.ok) {
-                throw new Error("Failed to fetch user");
-            }
-            const data = await res.json();
-            setuser(data);
-            setLoading(false);
-        } catch (error) {
-            console.error("[user_GET]", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+    
     useEffect(() => {
+        const getuser = async () => {
+            try {
+                const res = await fetch("/api/user", {
+                    method: "GET",
+                });
+                if (!res.ok) {
+                    throw new Error("Failed to fetch user");
+                }
+                const data = await res.json();
+                setuser(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("[user_GET]", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        
         getuser();
     },[]);
 
