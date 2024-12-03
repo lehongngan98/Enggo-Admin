@@ -17,8 +17,11 @@ export const POST = async (req: NextRequest) => {
 
         const { title, background, Items } = await req.json();
 
-        if (!title || !background || !Items || !Array.isArray(Items)) {
-            return new NextResponse("All fields are required, and Items must be an array", { status: 400 });
+        console.log("[topicvideo_POST] : ", title, background, Items);
+        
+
+        if (!title || !background  || !Array.isArray(Items)) {
+            return new NextResponse("All fields are required, and Items must be an array", { status: 401 });
         }
 
         // Kiểm tra xem chủ đề video đã tồn tại chưa

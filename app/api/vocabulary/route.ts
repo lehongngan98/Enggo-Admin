@@ -17,7 +17,7 @@ export const POST = async (req: NextRequest) => {
         const { image, titleEn, titleVn, vocab } = await req.json();
 
         if (!image || !titleEn || !titleVn || !vocab || !Array.isArray(vocab)) {
-            return new NextResponse("All fields are required, and vocab must be an array", { status: 400 });
+            return new NextResponse("All fields are required, and vocab must be an array", { status: 401 });
         }
 
         // Kiểm tra xem chủ đề từ vựng đã tồn tại chưa

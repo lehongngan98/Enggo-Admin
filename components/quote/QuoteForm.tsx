@@ -24,14 +24,14 @@ import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
 
-    author: z.string().min(2).max(20),
-    text: z.string().min(2),
+    author: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
+    text: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
     words: z.array(
         z.object({
-            word: z.string().min(1),
-            meaning: z.string().min(1),
-            pronunciation: z.string().min(1),
-            type: z.string().min(1),
+            word: z.string(),
+            meaning: z.string(),
+            pronunciation: z.string(),
+            type: z.string(),
         })
     )
         .optional(),
@@ -70,6 +70,31 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
     };
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        const { words } = values;
+        if(words){
+            const isType = words.every((item) => item.type);
+            const isWord = words.every((item) => item.word);
+            const isMeaning = words.every((item) => item.meaning);
+            const isPronunciation = words.every((item) => item.pronunciation);
+            
+            if(!isWord){
+                toast.error("Vui lòng nhập từ!");
+                return;
+            }
+            
+            if(!isPronunciation){
+                toast.error("Vui lòng nhập cách phát âm!");
+                return;
+            }
+            if(!isMeaning){
+                toast.error("Vui lòng nhập nghĩa!");
+                return;
+            }
+            if(!isType){
+                toast.error("Vui lòng nhập loại từ!");
+                return;
+            }
+        }
         try {
             setIsLoading(true);
 
@@ -153,7 +178,7 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -167,7 +192,7 @@ const QuoteForm: React.FC<QuoteProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Textarea {...field} onKeyDown={handleKeyPress} className="h-5" />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />

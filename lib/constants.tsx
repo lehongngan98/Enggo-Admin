@@ -56,7 +56,7 @@ import {
     {
       url: "/vocabulary",
       icon: <ALargeSmall/>,
-      label: "Tự Vựng",
+      label: "Từ Vựng",
     },
     {
       url: "/quote",

@@ -24,7 +24,7 @@ import { Textarea } from "../ui/textarea";
 import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
-    topic: z.string().min(2).max(20),   
+    topic: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
     subTopic: z.array(
         z.object({
             titleEn: z.string(),
@@ -75,6 +75,24 @@ const BilingualTopicForm: React.FC<BilingualTopicsProps> = ({ initialData }) => 
     };
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        const { subTopic } = values;
+        if(subTopic){
+            const isTitleEn = subTopic.every((item: any) => item.titleEn);
+            const isTitleVn = subTopic.every((item: any) => item.titleVn);
+            const isText = subTopic.every((item: any) => item.text);
+            if(!isTitleEn){
+                toast.error("Vui lòng nhập tiêu đề tiếng anh!");
+                return;
+            }
+            if(!isTitleVn){
+                toast.error("Vui lòng nhập tiêu đề tiếng việt!");
+                return;
+            }
+            if(!isText){
+                toast.error("Vui lòng nhập nội dung!");
+                return;
+            }
+        }
         try {
             setIsLoading(true);
 
@@ -154,7 +172,7 @@ const BilingualTopicForm: React.FC<BilingualTopicsProps> = ({ initialData }) => 
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />

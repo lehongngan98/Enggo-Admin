@@ -24,14 +24,14 @@ import { Textarea } from "../ui/textarea";
 import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
-    nameEn: z.string().min(2).max(20),
-    nameVn: z.string().min(2).max(20),
-    image: z.string(),
-    content: z.string().min(2).trim(),
+    nameEn: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
+    nameVn: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
+    image: z.string().url({ message: "Bạn chưa chọn hình ảnh" }),
+    content: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).trim(),
     words: z.array(
         z.object({
-            word: z.string().min(1, "Word cannot be empty"),
-            meaning: z.string().min(1, "Meaning cannot be empty"),
+            word: z.string(),
+            meaning: z.string(),
         })
     )
         .optional(),
@@ -72,6 +72,15 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
     };
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        const {words}= values;
+        if(words){
+            const isWord = words.every(items => items.word);
+            const isMeaning = words.every(items => items.meaning);
+            if(!isWord || !isMeaning){
+                toast.error("Vui lòng nhập từ vựng và nghĩa!");
+                return;
+            }
+        }
         try {
             setIsLoading(true);
 
@@ -153,7 +162,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -167,7 +176,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -186,7 +195,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                                         onRemove={() => field.onChange("")}
                                     />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -207,7 +216,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                                         onKeyDown={handleKeyPress}
                                     />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />

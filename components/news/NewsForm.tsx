@@ -24,9 +24,9 @@ import { Textarea } from "../ui/textarea";
 import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
-    title: z.string().min(2).max(20),
-    content: z.string().min(2).max(500).trim(),
-    image: z.string(),
+    title: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
+    content: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(500).trim(),
+    image: z.string().url({ message: "Bạn chưa chọn hình ảnh" }),
 });
 
 interface NewsProps {
@@ -124,7 +124,7 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input placeholder="Title" {...field} onKeyDown={handleKeyPress}/>
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -143,7 +143,7 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
                                         onKeyDown={handleKeyPress}
                                     />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -161,7 +161,7 @@ const NewsForm: React.FC<NewsProps> = ({ initialData }) => {
                                         onRemove={() => field.onChange("")}
                                     />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />

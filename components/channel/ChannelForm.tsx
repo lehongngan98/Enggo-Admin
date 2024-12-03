@@ -22,9 +22,9 @@ import { Separator } from "../ui/separator";
 import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
-    title: z.string().min(2).max(20),   
-    description: z.string().min(2).max(1000),
-    channelId: z.string().min(2).max(200),
+    title: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
+    description: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(1000),
+    channelId: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
 });
 
 interface ChannelFormProps {
@@ -143,7 +143,7 @@ const ChannelForm: React.FC<ChannelFormProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -159,7 +159,7 @@ const ChannelForm: React.FC<ChannelFormProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Textarea {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -175,7 +175,7 @@ const ChannelForm: React.FC<ChannelFormProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />

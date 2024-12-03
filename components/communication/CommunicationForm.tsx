@@ -24,9 +24,9 @@ import { Separator } from "../ui/separator";
 import Loader from "../custom ui/Loader";
 
 const formSchema = z.object({
-    titleEn: z.string(),
-    titleVn: z.string(),
-    image: z.string(),
+    titleEn: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
+    titleVn: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }).max(200),
+    image: z.string().url({ message: "Bạn chưa chọn hình ảnh" }),
     vocab: z.array(
         z.object({
             en: z.string(),
@@ -70,6 +70,20 @@ const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
     };
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        const { vocab} = values;
+        if(vocab){
+            const isEn = vocab.every((item) => item.en);
+            const isVn = vocab.every((item) => item.vn);
+            if(!isEn){
+                toast.error("Vui lòng nhập từ vựng tiếng anh!");
+                return;
+            }
+            if(!isVn){
+                toast.error("Vui lòng nhập từ vựng tiếng việt!");
+                return;
+            }
+        }
+
         try {
             setIsLoading(true);
 
@@ -92,6 +106,11 @@ const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
                 setIsLoading(false);
                 toast.error("Chủ đề đã tồn tại!");
                 return;
+            }
+
+            if(res.status === 401){
+                setIsLoading(false);
+                toast.error("Bạn chưa nhập đủ thông tin!");
             }
 
             if (res.ok) {
@@ -155,7 +174,7 @@ const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -169,7 +188,7 @@ const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />
@@ -189,7 +208,7 @@ const CommunicationForm: React.FC<CommunicationProps> = ({ initialData }) => {
                                         onRemove={() => field.onChange("")}
                                     />
                                 </FormControl>
-                                <FormMessage />
+                                <FormMessage className="text-red-1" />
                             </FormItem>
                         )}
                     />

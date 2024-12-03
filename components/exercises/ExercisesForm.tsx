@@ -225,7 +225,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
                 <FormControl>
                   <Input {...field} onKeyDown={handleKeyPress} />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-1" />
               </FormItem>
             )}
           />
@@ -243,7 +243,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
                     onRemove={() => field.onChange("")}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-1" />
               </FormItem>
             )}
           />

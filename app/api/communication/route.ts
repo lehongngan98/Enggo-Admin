@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest) => {
         console.log(image, titleEn, titleVn, vocab);
 
         if (!image || !titleEn || !titleVn || !vocab || !Array.isArray(vocab)) {
-            return new NextResponse("All fields are required, and vocab must be an array", { status: 400 });
+            return new NextResponse("All fields are required, and vocab must be an array", { status: 401 });
         }
 
     
