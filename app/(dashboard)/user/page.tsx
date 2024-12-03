@@ -17,6 +17,7 @@ const User = () => {
             try {
                 const res = await fetch("/api/user", {
                     method: "GET",
+                    cache: "no-store", // Ngăn cache dữ liệu trả về
                 });
                 if (!res.ok) {
                     throw new Error("Failed to fetch user");
