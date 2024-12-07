@@ -22,18 +22,28 @@ import {
     //   icon: <LayoutDashboard />,
     //   label: "Dashboard",
     // },
+    // {
+    //   url: "/user",
+    //   icon: <UsersRound />,
+    //   label: "Users",
+    // },   
+    // {
+    //   url: "/collections",
+    //   icon: <ShoppingBag />,
+    //   label: "Bộ Sưu Tập",
+    // } ,
+    // {
+    //   url: "/products",
+    //   icon: <Tag />,
+    //   label: "Sản Phẩm",
+    // },
     {
-      url: "/user",
-      icon: <UsersRound />,
-      label: "Users",
-    },    
-    {
-      url: "/news",
+      url: "/typeofnews",
       icon: <Newspaper />,
-      label: "Chủ Đề Tin Tức",
+      label: "Loại Tin Tức",
     },
     {
-      url: "/infomation",
+      url: "/news",
       icon: <Captions />,
       label: "Tin Tức",
     },
@@ -63,11 +73,7 @@ import {
       icon: <TextQuote/>,
       label: "Trích Dẫn",
     },
-    {
-      url: "/communication",
-      icon: <Speech/>,
-      label: "Giao Tiếp",
-    },
+    
     {
       url: "/bilingualtopic",
       icon: <CaseSensitive/>,
@@ -77,6 +83,10 @@ import {
       url: "/channel",
       icon: <Youtube/>,
       label: "Kênh Học Youtube",
-    }
+    },{
+      url: "/communication",
+      icon: <Speech/>,
+      label: "Giao Tiếp",
+    },
 
   ];

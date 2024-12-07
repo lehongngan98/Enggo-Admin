@@ -7,6 +7,7 @@ type CollectionType = {
   products: ProductType[];
 };
 
+
 type ProductType = {
   _id: string;
   title: string;
@@ -23,13 +24,22 @@ type ProductType = {
   updatedAt: Date;
 };
 
+// TypeOfNews types
+type TypeOfNewsType = {
+  _id: string;
+  title: string; 
+  news: NewsType[];
+};
+
+
 // News paper types
 type NewsType = {
   _id: string;
   title: string;
   image: string;
   content: string;
-  information: InformationType[];
+  information: [InformationType];
+  typeofnews: [TypeOfNewsType];
   createdAt: Date;
   updatedAt: Date;
 };
@@ -39,9 +49,6 @@ type InformationType = {
   subTitle: string;  
   image: string;
   text: string;
-  news: NewsType;
-  createdAt: Date;
-  updatedAt: Date;
 };
 
 

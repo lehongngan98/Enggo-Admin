@@ -1,34 +1,21 @@
-import { info } from 'console';
-import mongoose from 'mongoose';
-import { InfomationSchema } from './Information';
+import mongoose, { Schema, model, models } from 'mongoose';
 
-const newsSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-        unique: true,
+const newsSchema = new Schema({
+  title: { type: String, required: true },
+  content: { type: String, required: true, unique: true },
+  image: { type: String, required: true },
+  information: [
+    {
+      image: { type: String, required: true },
+      subTitle: { type: String, required: true },
+      text: { type: String, required: true },
     },
-    content: String,
-    image: {
-        type: String,
-        required: true,
-    },
-    information:[
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Infomation',
-        }
-    ],    
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now,
-    }
+  ],
+  typeofnews: [{ type: Schema.Types.ObjectId, ref: 'TypeOfNews' }],
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
-const News = mongoose.models.News || mongoose.model('News', newsSchema);
+const News = models.News || model('News', newsSchema);
 
 export default News;

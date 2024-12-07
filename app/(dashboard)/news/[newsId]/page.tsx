@@ -1,41 +1,42 @@
 "use client";
+import Loader from '@/components/custom ui/Loader';
+import NewsForm from '@/components/news/NewsForm';
+import { NewsType } from '@/lib/types';
+import { useEffect, useState } from 'react';
 
-import { useEffect, useState } from "react";
-import Loader from "../../../../components/custom ui/Loader";
-
-import NewsForm from "@/components/news/NewsForm";
-import { NewsType } from "@/lib/types";
 
 const NewsDetail = ({ params }: { params: { newsId: string } }) => {
-    const [news, setNews] = useState<NewsType | null>(null);
-    const [loading, setLoading] = useState(true);
+  const [newsDetail, setNewsDetail] = useState<NewsType | null>(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const getNewDetail = async () => {
-            try {
-                const res = await fetch(`/api/news/${params.newsId}`, {
-                    method: "GET",
-                });
-                if (!res.ok) {
-                    throw new Error("Failed to fetch news");
-                }
-                const data = await res.json();
-                setNews(data);
-                setLoading(false);
-            } catch (error) {
-                console.error("[newsId_GET]", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-      getNewDetail();
-    },[params.newsId]);
-    console.log(news);
+  useEffect(() => {
+    const getNewsDetail = async () => {
+      try {
+        const res = await fetch(`/api/news/${params.newsId}`, {
+          method: "GET",
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch newsId");
+        }
+        const data = await res.json();
+        console.log("newsId_GET", data);
+        
+        setNewsDetail(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("[newsId_GET]", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getNewsDetail();
+  }, [params.newsId]);
+  console.log(newsDetail);
 
-    
-    return loading ? <Loader /> : (
-      <NewsForm  initialData={news}/>
-    )
-};
 
-export default NewsDetail;
+  return loading ? <Loader /> : (
+    <NewsForm initialData={newsDetail} />
+  )
+}
+
+export default NewsDetail

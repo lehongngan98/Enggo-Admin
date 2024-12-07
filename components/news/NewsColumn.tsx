@@ -1,43 +1,27 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import Image from "next/image"
 import Delete from "../custom ui/Delete"
 import Link from "next/link"
-import { NewsType } from "@/lib/types"
+import { NewsType, ProductType } from "@/lib/types"
+import Image from "next/image"
 
 
 export const columns: ColumnDef<NewsType>[] = [
 	{
-		accessorKey: "title",
-		header: "Tiêu đề",
-		cell: ({ row }) => (<Link href={`/news/${row.original._id}`} className="hover:text-red-500 hover:italic">{row.original.title}</Link>),
-	},
-	{
 		accessorKey: "content",
-		header: "Nội dung",
-		cell: ({ row }) => <p>{row.original.content}</p>,
+		header: "Tiêu đề",
+		cell: ({ row }) => (<Link href={`/news/${row.original._id}`} className="hover:text-red-500 hover:italic">{row.original.content}</Link>),
 	},
 	{
 		accessorKey: "image",
-		cell: ({ row }) => <Image src={row.original.image} alt={row.original.title} width={40} height={40} className="object-cover" />,
-		// cell: ({ row }) => <img src={row.original.image} alt={row.original.title} className="h-10 w-10 object-cover" />,
+		cell: ({ row }) => <Image src={row.original.image} alt="news" width={80} height={80} className="w-20 h-20" />,
+		// cell: ({ row }) => <img src={row.original.image} alt="news" className="w-20 h-20" />,
+	},{		
+		accessorKey: "typeofnews",
+		header: "Loại tin tức",
+		cell: ({ row }) => <span>{row.original.typeofnews?.[0]?.title}</span>,
 	},
-	{
-		accessorKey: "infomation",
-		header: "Số lượng bài báo",
-		cell: ({ row }) => {
-			const info = row.original.information;
-			console.log("info :", info);
-			
-			// Kiểm tra nếu `information` là một mảng
-			return <p className="text-center">{Array.isArray(info) ? info.length : 0}</p>;
-		},
-	},
-	
-
-
-	
 	{
 		id: "actions",
 		header: "Hành động",

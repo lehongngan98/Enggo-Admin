@@ -1,10 +1,8 @@
 
-import NewsForm from '@/components/news/NewsForm'
+import NewsForm from "@/components/news/NewsForm";
 
-const page = () => {
-    return (
-        <NewsForm />
-    )
-}
+const CreateProduct = () => {
+    return <NewsForm />;
+};
 
-export default page
+export default CreateProduct;
