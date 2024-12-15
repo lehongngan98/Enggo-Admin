@@ -7,7 +7,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/typeofnews");
+    router.push("/news");
   }, [router]);
 
   return null;

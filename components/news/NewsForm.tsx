@@ -293,7 +293,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ initialData }) => {
 
           {/* Other fields information */}
           <FormItem>
-            <FormLabel>Thông tin chi tiết</FormLabel>
+            <FormLabel>Thông tin chi tiết tin tức</FormLabel>
             <div className="space-y-4">
               {form.getValues("information").map((_, index) => (
                 <div key={index} className="space-y-4 rounded-md border p-4 ">
@@ -302,7 +302,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ initialData }) => {
                     name={`information.${index}.subTitle`}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>SubTitle</FormLabel>
+                        <FormLabel>Phụ đề</FormLabel>
                         <FormControl>
                           <Input
                             // placeholder="SubTitle"
@@ -320,7 +320,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ initialData }) => {
                     name={`information.${index}.text`}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Text</FormLabel>
+                        <FormLabel>Nội dung</FormLabel>
                         <FormControl>
                           <Input
                             // placeholder="Text"
@@ -377,14 +377,14 @@ const NewsForm: React.FC<NewsFormProps> = ({ initialData }) => {
 
           <div className="flex gap-10">
             <Button type="submit" className="bg-blue-1 text-white">
-              Submit
+              Xác nhận
             </Button>
             <Button
               type="button"
               onClick={() => router.push("/news")}
               className="bg-blue-1 text-white"
             >
-              Discard
+              Huỷ
             </Button>
           </div>
         </form>

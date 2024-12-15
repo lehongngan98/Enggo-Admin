@@ -192,7 +192,7 @@ const BilingualTopicForm: React.FC<BilingualTopicsProps> = ({ initialData }) => 
 
                         {(form.watch("subTopic") || []).map((item, index) => (
                             <div key={index} className="flex items-start gap-4 flex-col border rounded-md p-4 w-50">
-                                <p>{index+1}</p>
+                                <p>Bài viết {index+1}</p>
                                 <FormControl>
                                     <Input
                                         placeholder="Tiêu Đề Tiếng Anh"
@@ -213,7 +213,7 @@ const BilingualTopicForm: React.FC<BilingualTopicsProps> = ({ initialData }) => 
                                 </FormControl>
                                 <FormControl>
                                     <Textarea
-                                        placeholder="Nội Dung"
+                                        placeholder="Nội dung bài viết"
                                         value={item.text}
                                         className="h-40"
                                         onChange={(e) =>

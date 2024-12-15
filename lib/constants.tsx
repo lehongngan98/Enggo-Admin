@@ -1,53 +1,29 @@
 import {
   ALargeSmall,
   Captions,
-    CaseSensitive,
-    LayoutDashboard,
-    LayoutList,
-    Newspaper,
-    NotebookText,
-    Play,
-    Shapes,
-    ShoppingBag,
-    Speech,
-    Tag,
-    TextQuote,
-    UsersRound,
-    Youtube,
-  } from "lucide-react";
+  CaseSensitive,
+  LayoutList,
+  Newspaper,
+  NotebookText,
+  Play,
+  Speech,
+  TextQuote,
+  Youtube
+} from "lucide-react";
   
   export const navLinks = [
-    // {
-    //   url: "/",
-    //   icon: <LayoutDashboard />,
-    //   label: "Dashboard",
-    // },
-    // {
-    //   url: "/user",
-    //   icon: <UsersRound />,
-    //   label: "Users",
-    // },   
-    // {
-    //   url: "/collections",
-    //   icon: <ShoppingBag />,
-    //   label: "Bộ Sưu Tập",
-    // } ,
-    // {
-    //   url: "/products",
-    //   icon: <Tag />,
-    //   label: "Sản Phẩm",
-    // },
-    {
-      url: "/typeofnews",
-      icon: <Newspaper />,
-      label: "Loại Tin Tức",
-    },
+   
     {
       url: "/news",
       icon: <Captions />,
       label: "Tin Tức",
     },
     
+    {
+      url: "/typeofnews",
+      icon: <Newspaper />,
+      label: "Loại Tin Tức",
+    },
     {
       url: "/exercises",
       icon: <LayoutList/>,

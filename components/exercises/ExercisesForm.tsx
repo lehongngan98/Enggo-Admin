@@ -221,7 +221,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Chủ đề</FormLabel>
+                <FormLabel>Chủ đề của bài tập:</FormLabel>
                 <FormControl>
                   <Input {...field} onKeyDown={handleKeyPress} />
                 </FormControl>
@@ -235,7 +235,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
             name="background"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Hình ảnh của chủ đề</FormLabel>
+                <FormLabel>Hình ảnh của chủ đề bài tập:</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field.value ? [field.value] : []}
@@ -248,9 +248,10 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
             )}
           />
           {/* Other fields Items*/}
+          <Separator className=" bg-grey-1   mt-4" />
 
           <FormItem>
-            <FormLabel>Bài tập của chủ đề</FormLabel>
+            <FormLabel>Danh sách bài tập:</FormLabel>
 
             {(form.watch("Items") || []).map((item, index) => (
               <div
@@ -302,7 +303,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
                     key={contentIndex}
                     className="flex flex-col gap-4 p-4 border rounded-md w-full"
                   >
-                    <p>Nội dung {contentIndex + 1}</p>
+                    <p>Nội dung audio {contentIndex + 1}</p>
 
                     <FormControl>
                       <Textarea
@@ -333,7 +334,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
                           }
                         );
                       }}
-                      className="bg-red-500 text-white mt-2"
+                      className="bg-red-500 text-white mt-2 w-1/6"
                     >
                       Xoá nội dung
                     </Button>
@@ -354,8 +355,9 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
                   Thêm nội dung
                 </Button>
 
-                <Separator className=" bg-grey-1   mt-4" />
+                <Separator className=" bg-grey-1   mt-4 mb-4" />
 
+                  <p>Câu hỏi trong bài tập:</p>
                 {/*choosePhrase  */}
                 {(item.choosePhrase || []).map((phrase, phraseIndex) => (
                   <div
@@ -453,7 +455,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
                           }
                         );
                       }}
-                      className="mt-2 bg-red-500 text-white "
+                      className="mt-2 bg-red-500 text-white w-1/6"
                     >
                       Xoá câu hỏi
                     </Button>
@@ -474,7 +476,7 @@ const ExercisesForm: React.FC<ExercisesProps> = ({ initialData }) => {
                           { shouldValidate: true }
                         )
                       }
-                      className="mt-4 bg-blue-1 text-white"
+                      className="mt-4 bg-blue-1 text-white w-1/6"
                     >
                       Thêm câu hỏi
                     </Button>

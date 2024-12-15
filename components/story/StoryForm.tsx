@@ -207,7 +207,7 @@ const StoryForm: React.FC<StoryProps> = ({ initialData }) => {
                         name="content"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Nội dung</FormLabel>
+                                <FormLabel>Nội dung truyện</FormLabel>
                                 <FormControl>
                                     <Textarea
                                         // placeholder="Description"

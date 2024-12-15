@@ -138,7 +138,7 @@ const ChannelForm: React.FC<ChannelFormProps> = ({ initialData }) => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
-                                    Tiêu đề
+                                    Tiêu đề kênh
                                 </FormLabel>
                                 <FormControl>
                                     <Input  {...field} onKeyDown={handleKeyPress} />
@@ -154,7 +154,7 @@ const ChannelForm: React.FC<ChannelFormProps> = ({ initialData }) => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
-                                    Mô tả
+                                    Mô tả kênh
                                 </FormLabel>
                                 <FormControl>
                                     <Textarea {...field} onKeyDown={handleKeyPress} />
@@ -170,7 +170,7 @@ const ChannelForm: React.FC<ChannelFormProps> = ({ initialData }) => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
-                                    Mã kênh
+                                    Mã kênh Youtube
                                 </FormLabel>
                                 <FormControl>
                                     <Input {...field} onKeyDown={handleKeyPress} />

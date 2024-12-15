@@ -10,7 +10,7 @@ import {
     FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CollectionType, TypeOfNewsType } from "@/lib/types";
+import { TypeOfNewsType } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -18,10 +18,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 import Delete from "../custom ui/Delete";
-import ImageUpload from "../custom ui/ImageUpload";
 import Loader from "../custom ui/Loader";
 import { Separator } from "../ui/separator";
-import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
     title: z.string().min(2, { message: "Vui lòng nhập trên 2 kí tự" }),
@@ -142,14 +140,14 @@ const TypeOfNewsForm: React.FC<TypeOfNewsFormProps> = ({ initialData }) => {
 
                     <div className="flex gap-10">
                         <Button type="submit" className="bg-blue-1 text-white">
-                            Submit
+                            Xác nhận
                         </Button>
                         <Button
                             type="button"
                             onClick={() => router.push("/typeofnews")}
                             className="bg-blue-1 text-white"
                         >
-                            Discard
+                            Huỷ
                         </Button>
                     </div>
                 </form>

@@ -202,7 +202,7 @@ const TopicVideoForm: React.FC<TopicVideoProps> = ({ initialData }) => {
                 key={index}
                 className="flex items-start gap-4 flex-col border rounded-md p-4 w-50"
               >
-                <p>{index + 1}</p>
+                <p>Video {index + 1}</p>
                 <FormControl>
                   <ImageUpload
                     value={item.image ? [item.image] : []}
