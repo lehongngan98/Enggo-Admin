@@ -1,7 +1,5 @@
 
-import Collection from "@/lib/models/Collection";
 import News from "@/lib/models/News";
-import Product from "@/lib/models/Product";
 import TypeOfNews from "@/lib/models/TypeOfNews";
 import { connectToDB } from "@/lib/mongoDB";
 import { auth } from "@clerk/nextjs/server";

@@ -1,10 +1,10 @@
 "use client"
 
+import { NewsType } from "@/lib/types"
 import { ColumnDef } from "@tanstack/react-table"
-import Delete from "../custom ui/Delete"
-import Link from "next/link"
-import { NewsType, ProductType } from "@/lib/types"
 import Image from "next/image"
+import Link from "next/link"
+import Delete from "../custom ui/Delete"
 
 
 export const columns: ColumnDef<NewsType>[] = [

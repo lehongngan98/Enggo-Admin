@@ -5,7 +5,7 @@ import { columns } from '@/components/news/NewsColumn';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { NewsType, ProductType } from '@/lib/types';
+import { NewsType } from '@/lib/types';
 import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';

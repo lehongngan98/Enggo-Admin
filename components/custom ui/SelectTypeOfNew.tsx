@@ -4,7 +4,7 @@ import {
     CommandInput,
     CommandItem
 } from "@/components/ui/command";
-import { CollectionType, TypeOfNewsType } from "@/lib/types";
+import { TypeOfNewsType } from "@/lib/types";
 import { X } from "lucide-react";
 import React, { useState } from "react";
 

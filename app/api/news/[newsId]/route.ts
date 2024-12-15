@@ -1,4 +1,3 @@
-import Collection from "@/lib/models/Collection";
 import News from "@/lib/models/News";
 import TypeOfNews from "@/lib/models/TypeOfNews";
 import { connectToDB } from "@/lib/mongoDB";

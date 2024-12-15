@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Product, { ProductSchema } from './Product';
 
 
 const typeOfNewsSchema = new mongoose.Schema({
